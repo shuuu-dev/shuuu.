@@ -1,0 +1,1298 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shuuu — Portfolio</title><style>*{box-sizing:border-box}html,body{margin:0;background:white;color:#161616;font-family:Inter,Arial,"Noto Sans CJK SC","Microsoft YaHei",sans-serif}p{margin:0}#viewport{position:relative;width:100%;overflow:hidden}#stage{position:absolute;left:0;top:0;width:1920px;transform-origin:top left}#stage>[data-panel]{width:1920px!important;height:1080px!important;display:none}#stage>[data-panel].active{display:block} [data-name="Navigation / Fixed"]{z-index:20} [data-name^="Nav item"],[data-name="Brand / Home"],[data-name="Folder / Toggle"],[data-name^="Work row"],[data-name="Project actions / Fixed"],[data-photo]{cursor:pointer} [data-name^="Work row"]:hover{background:#f7f7f7} [data-photo]:hover{filter:brightness(.94)} :focus-visible{outline:2px solid #555;outline-offset:3px}
+/* 项目文件夹交互 */
+.project-hover-zone{position:absolute;left:550px;top:320px;width:820px;height:420px;z-index:8;pointer-events:none}
+.project-hover-zone.is-open{pointer-events:auto}
+.project-hover-zone .hover-folder{pointer-events:auto;z-index:3;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.project-hover-zone.is-open .hover-folder{transform:translateY(5px)}
+.project-hover-zone .hover-photo{opacity:0;pointer-events:none;z-index:2;transition:opacity .42s ease,transform .65s cubic-bezier(.22,1,.36,1),filter .25s ease;transform:translate(var(--from-x),var(--from-y)) scale(.72)}
+.project-hover-zone.is-open .hover-photo{opacity:1;pointer-events:auto;transform:translate(0,0) scale(1)}
+.project-hover-zone.is-open .hover-photo:nth-of-type(2){transition-delay:.04s}
+.project-hover-zone.is-open .hover-photo:nth-of-type(3){transition-delay:.08s}
+.project-hover-zone .hover-photo:hover{filter:brightness(.94);z-index:4}
+[data-name^="Nav item"]{transition:filter .22s ease,transform .22s ease}
+[data-name^="Nav item"]:hover{filter:brightness(.94);transform:translateY(-1px)}
+[data-name^="Work row"]{transition:background-color .25s ease}
+@media (prefers-reduced-motion:reduce){.project-hover-zone .hover-folder,.project-hover-zone .hover-photo,[data-name^="Nav item"],[data-name^="Work row"]{transition:none}}
+</style></head><body><main id="viewport"><div id="stage"><div class="bg-white relative size-full" data-node-id="1:103" data-name="01 / home" style="background-color:#fff;position:relative;width:100%;height:100%" data-panel="1:103">
+      <div class="-translate-x-1/2 -translate-y-1/2 [word-break:break-word] absolute flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] left-[calc(50%-0.5px)] not-italic text-[40px] text-black text-center top-1/2 whitespace-nowrap" data-node-id="1:104" style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-weight:400;justify-content:center;line-height:0;left:calc(50% - 0.5px);font-style:normal;font-size:40px;color:#000;text-align:center;top:50%;white-space:nowrap;transform:translateX(-50%) translateY(-50%)">
+        <p class="leading-[normal]" style="line-height:normal">Shuuu</p>
+      </div>
+      <div class="absolute bg-white border-[#e9e9e9] border-[1.333px] border-solid content-stretch flex gap-[10.667px] h-[80px] items-center left-[32px] overflow-clip pl-[24px] pr-[13.333px] py-[13.333px] top-[32px]" data-node-id="1:105" data-name="Navigation / Fixed" style="position:absolute;background-color:#fff;border-color:#e9e9e9;border-width:1.333px;border-style:solid;align-content:stretch;display:flex;gap:10.667px;height:80px;align-items:center;left:32px;overflow:hidden;padding-left:24px;padding-right:13.333px;padding-top:13.333px;padding-bottom:13.333px;top:32px">
+        <p class="[word-break:break-word] font-['Inter:Bold'] font-bold h-[26px] leading-[normal] not-italic relative shrink-0 text-[#161616] text-[20px] w-[102px]" data-node-id="1:106" style="word-break:break-word;font-weight:700;height:26px;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:20px;width:102px">
+          (Shuuu™)
+        </p>
+        <div class="bg-[#f3f3f3] h-[50px] relative shrink-0 w-[177px]" data-node-id="1:107" data-name="Nav item 0" style="background-color:#f3f3f3;height:50px;position:relative;flex-shrink:0;width:177px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[184px]" data-node-id="I1:107;227:499" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:107;227:499;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              PROJECT
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[173.333px]" data-node-id="1:108" data-name="Nav item 3" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:173.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[173.333px]" data-node-id="I1:108;227:504" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:173.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:108;227:504;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              INFORMATION
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[184px]" data-node-id="1:109" data-name="Nav item 3" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:184px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[184px]" data-node-id="I1:109;1242:3" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:109;1242:3;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              SKILL
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[149.333px]" data-node-id="1:110" data-name="Nav item 2" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:149.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[149.333px]" data-node-id="I1:110;227:509" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:149.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:110;227:509;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              CONTACT ↗
+            </p>
+          </div>
+        </div>
+      </div>
+    </div><div class="bg-white relative size-full" data-node-id="1:111" data-name="02 / work" style="background-color:#fff;position:relative;width:100%;height:100%" data-panel="1:111">
+      <div class="absolute bg-white border-[#eee] border-[1.333px] border-solid h-[149.333px] left-[853.33px] opacity-0 overflow-clip top-[593.33px] w-[213.333px]" data-node-id="1:112" data-name="Photo / 0" style="position:absolute;background-color:#fff;border-color:#eee;border-width:1.333px;border-style:solid;height:149.333px;left:853.33px;opacity:0;overflow:hidden;top:593.33px;width:213.333px">
+        <div class="[word-break:break-word] absolute bg-[#303f2a] h-[136px] left-[5.33px] not-italic overflow-clip text-[#e2e5a4] top-[5.33px] w-[200px]" data-node-id="1:113" data-name="Replace with client image" style="word-break:break-word;position:absolute;background-color:#303f2a;height:136px;left:5.33px;font-style:normal;overflow:hidden;color:#e2e5a4;top:5.33px;width:200px">
+          <div class="absolute font-['Inter:Bold'] font-bold leading-[0] left-[18px] text-[26.667px] top-[32.64px] w-[166px]" data-node-id="1:114" style="position:absolute;font-weight:700;line-height:0;left:18px;font-size:26.667px;top:32.64px;width:166px">
+            <p class="leading-[1.05] mb-0" style="line-height:1.05;margin-bottom:0">AFTER</p>
+            <p class="leading-[1.05]" style="line-height:1.05">FORM</p>
+          </div>
+          <p class="absolute font-['Inter:Regular'] font-normal leading-[normal] left-[18px] text-[9.333px] top-[118.67px] whitespace-nowrap" data-node-id="1:115" style="position:absolute;font-weight:400;line-height:normal;left:18px;font-size:9.333px;top:118.67px;white-space:nowrap">
+            CONCEPT VISUAL / 2025
+          </p>
+        </div>
+      </div>
+      <div class="absolute bg-white border-[#eee] border-[1.333px] border-solid h-[149.333px] left-[853.33px] opacity-0 overflow-clip top-[593.33px] w-[213.333px]" data-node-id="1:116" data-name="Photo / 1" style="position:absolute;background-color:#fff;border-color:#eee;border-width:1.333px;border-style:solid;height:149.333px;left:853.33px;opacity:0;overflow:hidden;top:593.33px;width:213.333px">
+        <div class="[word-break:break-word] absolute bg-[#f0eee6] h-[136px] left-[5.33px] not-italic overflow-clip text-[#2d2c26] top-[5.33px] w-[200px]" data-node-id="1:117" data-name="Replace with client image" style="word-break:break-word;position:absolute;background-color:#f0eee6;height:136px;left:5.33px;font-style:normal;overflow:hidden;color:#2d2c26;top:5.33px;width:200px">
+          <div class="absolute font-['Inter:Bold'] font-bold leading-[0] left-[18px] text-[26.667px] top-[32.64px] w-[166px]" data-node-id="1:118" style="position:absolute;font-weight:700;line-height:0;left:18px;font-size:26.667px;top:32.64px;width:166px">
+            <p class="leading-[1.05] mb-0" style="line-height:1.05;margin-bottom:0">ORDINARY</p>
+            <p class="leading-[1.05]" style="line-height:1.05">OBJECTS</p>
+          </div>
+          <p class="absolute font-['Inter:Regular'] font-normal leading-[normal] left-[18px] text-[9.333px] top-[118.67px] whitespace-nowrap" data-node-id="1:119" style="position:absolute;font-weight:400;line-height:normal;left:18px;font-size:9.333px;top:118.67px;white-space:nowrap">
+            CONCEPT VISUAL / 2025
+          </p>
+        </div>
+      </div>
+      <div class="absolute bg-white border-[#eee] border-[1.333px] border-solid h-[149.333px] left-[853.33px] opacity-0 overflow-clip top-[593.33px] w-[213.333px]" data-node-id="1:120" data-name="Photo / 2" style="position:absolute;background-color:#fff;border-color:#eee;border-width:1.333px;border-style:solid;height:149.333px;left:853.33px;opacity:0;overflow:hidden;top:593.33px;width:213.333px">
+        <div class="[word-break:break-word] absolute bg-[#ed5a26] h-[136px] left-[5.33px] not-italic overflow-clip text-[#161616] top-[5.33px] w-[200px]" data-node-id="1:121" data-name="Replace with client image" style="word-break:break-word;position:absolute;background-color:#ed5a26;height:136px;left:5.33px;font-style:normal;overflow:hidden;color:#161616;top:5.33px;width:200px">
+          <div class="absolute font-['Inter:Bold'] font-bold leading-[0] left-[18px] text-[26.667px] top-[32.64px] w-[166px]" data-node-id="1:122" style="position:absolute;font-weight:700;line-height:0;left:18px;font-size:26.667px;top:32.64px;width:166px">
+            <p class="leading-[1.05] mb-0" style="line-height:1.05;margin-bottom:0">OFF</p>
+            <p class="leading-[1.05]" style="line-height:1.05">GRID</p>
+          </div>
+          <p class="absolute font-['Inter:Regular'] font-normal leading-[normal] left-[18px] text-[9.333px] top-[118.67px] whitespace-nowrap" data-node-id="1:123" style="position:absolute;font-weight:400;line-height:normal;left:18px;font-size:9.333px;top:118.67px;white-space:nowrap">
+            CONCEPT VISUAL / 2025
+          </p>
+        </div>
+      </div>
+      <div class="absolute bg-white border-[#eee] border-[1.333px] border-solid h-[149.333px] left-[853.33px] opacity-0 overflow-clip top-[593.33px] w-[213.333px]" data-node-id="1:124" data-name="Photo / 3" style="position:absolute;background-color:#fff;border-color:#eee;border-width:1.333px;border-style:solid;height:149.333px;left:853.33px;opacity:0;overflow:hidden;top:593.33px;width:213.333px">
+        <div class="[word-break:break-word] absolute bg-[#ccd6ed] h-[136px] left-[5.33px] not-italic overflow-clip text-[#1b33a5] top-[5.33px] w-[200px]" data-node-id="1:125" data-name="Replace with client image" style="word-break:break-word;position:absolute;background-color:#ccd6ed;height:136px;left:5.33px;font-style:normal;overflow:hidden;color:#1b33a5;top:5.33px;width:200px">
+          <div class="absolute font-['Inter:Bold'] font-bold leading-[0] left-[18px] text-[26.667px] top-[32.64px] w-[166px]" data-node-id="1:126" style="position:absolute;font-weight:700;line-height:0;left:18px;font-size:26.667px;top:32.64px;width:166px">
+            <p class="leading-[1.05] mb-0" style="line-height:1.05;margin-bottom:0">IN</p>
+            <p class="leading-[1.05]" style="line-height:1.05">BETWEEN</p>
+          </div>
+          <p class="absolute font-['Inter:Regular'] font-normal leading-[normal] left-[18px] text-[9.333px] top-[118.67px] whitespace-nowrap" data-node-id="1:127" style="position:absolute;font-weight:400;line-height:normal;left:18px;font-size:9.333px;top:118.67px;white-space:nowrap">
+            CONCEPT VISUAL / 2024
+          </p>
+        </div>
+      </div>
+      <div class="absolute bg-white border-[#eee] border-[1.333px] border-solid h-[149.333px] left-[853.33px] opacity-0 overflow-clip top-[593.33px] w-[213.333px]" data-node-id="1:128" data-name="Photo / 4" style="position:absolute;background-color:#fff;border-color:#eee;border-width:1.333px;border-style:solid;height:149.333px;left:853.33px;opacity:0;overflow:hidden;top:593.33px;width:213.333px">
+        <div class="[word-break:break-word] absolute bg-[#eadfcd] h-[136px] left-[5.33px] not-italic overflow-clip text-[#694c32] top-[5.33px] w-[200px]" data-node-id="1:129" data-name="Replace with client image" style="word-break:break-word;position:absolute;background-color:#eadfcd;height:136px;left:5.33px;font-style:normal;overflow:hidden;color:#694c32;top:5.33px;width:200px">
+          <div class="absolute font-['Inter:Bold'] font-bold leading-[0] left-[18px] text-[26.667px] top-[32.64px] w-[166px]" data-node-id="1:130" style="position:absolute;font-weight:700;line-height:0;left:18px;font-size:26.667px;top:32.64px;width:166px">
+            <p class="leading-[1.05] mb-0" style="line-height:1.05;margin-bottom:0">SLOW</p>
+            <p class="leading-[1.05]" style="line-height:1.05">MATTER</p>
+          </div>
+          <p class="absolute font-['Inter:Regular'] font-normal leading-[normal] left-[18px] text-[9.333px] top-[118.67px] whitespace-nowrap" data-node-id="1:131" style="position:absolute;font-weight:400;line-height:normal;left:18px;font-size:9.333px;top:118.67px;white-space:nowrap">
+            CONCEPT VISUAL / 2024
+          </p>
+        </div>
+      </div>
+      <div class="absolute bg-white border-[#eee] border-[1.333px] border-solid h-[149.333px] left-[853.33px] opacity-0 overflow-clip top-[593.33px] w-[213.333px]" data-node-id="1:132" data-name="Photo / 5" style="position:absolute;background-color:#fff;border-color:#eee;border-width:1.333px;border-style:solid;height:149.333px;left:853.33px;opacity:0;overflow:hidden;top:593.33px;width:213.333px">
+        <div class="[word-break:break-word] absolute bg-[#e9e8e5] h-[136px] left-[5.33px] not-italic overflow-clip text-[#292929] top-[5.33px] w-[200px]" data-node-id="1:133" data-name="Replace with client image" style="word-break:break-word;position:absolute;background-color:#e9e8e5;height:136px;left:5.33px;font-style:normal;overflow:hidden;color:#292929;top:5.33px;width:200px">
+          <div class="absolute font-['Inter:Bold'] font-bold leading-[0] left-[18px] text-[26.667px] top-[32.64px] w-[166px]" data-node-id="1:134" style="position:absolute;font-weight:700;line-height:0;left:18px;font-size:26.667px;top:32.64px;width:166px">
+            <p class="leading-[1.05] mb-0" style="line-height:1.05;margin-bottom:0">FIELD</p>
+            <p class="leading-[1.05]" style="line-height:1.05">NOTES</p>
+          </div>
+          <p class="absolute font-['Inter:Regular'] font-normal leading-[normal] left-[18px] text-[9.333px] top-[118.67px] whitespace-nowrap" data-node-id="1:135" style="position:absolute;font-weight:400;line-height:normal;left:18px;font-size:9.333px;top:118.67px;white-space:nowrap">
+            CONCEPT VISUAL / 2024
+          </p>
+        </div>
+      </div>
+      <div class="absolute h-[133.333px] left-[876px] top-[586.67px] w-[168px]" data-node-id="1:136" data-name="Folder / Toggle" style="position:absolute;height:133.333px;left:876px;top:586.67px;width:168px">
+        <div class="absolute bg-[#d9d9d9] h-[73.333px] left-[29.33px] rounded-[6.667px] top-[16px] w-[109.333px]" data-node-id="1:137" data-name="Folder back" style="position:absolute;background-color:#d9d9d9;height:73.333px;left:29.33px;border-radius:6.667px;top:16px;width:109.333px"></div>
+        <div class="absolute bg-[#d9d9d9] h-[18.667px] left-[29.33px] rounded-[5.333px] top-[6.67px] w-[45.333px]" data-node-id="1:138" data-name="Folder tab" style="position:absolute;background-color:#d9d9d9;height:18.667px;left:29.33px;border-radius:5.333px;top:6.67px;width:45.333px"></div>
+        <div class="absolute bg-[#eee] h-[58.667px] left-[26.67px] rounded-[5.333px] top-[34.67px] w-[114.667px]" data-node-id="1:139" data-name="Folder front" style="position:absolute;background-color:#eee;height:58.667px;left:26.67px;border-radius:5.333px;top:34.67px;width:114.667px"></div>
+        <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[53.33px] not-italic text-[#161616] text-[13.333px] top-[108px] whitespace-nowrap" data-node-id="1:140" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:53.33px;font-style:normal;color:#161616;font-size:13.333px;top:108px;white-space:nowrap">
+          PROJECT
+        </p>
+      </div>
+      <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[calc(50%-141px)] not-italic text-[#999] text-[16px] top-[944px] whitespace-nowrap" data-node-id="1:141" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:calc(50% - 141px);font-style:normal;color:#999;font-size:16px;top:944px;white-space:nowrap">
+        CLICK TO OPEN / 点击文件夹展开作品
+      </p>
+      <div class="absolute bg-[#e9e9e9] h-[1.333px] left-[213.33px] top-[1053.33px] w-[1493.333px]" data-node-id="1:142" data-name="Divider / 0" style="position:absolute;background-color:#e9e9e9;height:1.333px;left:213.33px;top:1053.33px;width:1493.333px"></div>
+      <div class="absolute bg-[#e9e9e9] h-[1.333px] left-[213.33px] top-[1138.67px] w-[1493.333px]" data-node-id="1:143" data-name="Divider / 1" style="position:absolute;background-color:#e9e9e9;height:1.333px;left:213.33px;top:1138.67px;width:1493.333px"></div>
+      <div class="absolute bg-[#e9e9e9] h-[1.333px] left-[213.33px] top-[1224px] w-[1493.333px]" data-node-id="1:144" data-name="Divider / 2" style="position:absolute;background-color:#e9e9e9;height:1.333px;left:213.33px;top:1224px;width:1493.333px"></div>
+      <div class="absolute bg-[#e9e9e9] h-[1.333px] left-[213.33px] top-[1309.33px] w-[1493.333px]" data-node-id="1:145" data-name="Divider / 3" style="position:absolute;background-color:#e9e9e9;height:1.333px;left:213.33px;top:1309.33px;width:1493.333px"></div>
+      <div class="[word-break:break-word] absolute contents font-['Inter:Regular'] font-normal leading-[normal] left-[213px] not-italic top-[1054.67px] whitespace-nowrap" data-node-id="1:146" style="word-break:break-word;position:absolute;display:contents;font-weight:400;line-height:normal;left:213px;font-style:normal;top:1054.67px;white-space:nowrap">
+        <div class="absolute h-[82.667px] left-[213.33px] overflow-clip top-[1054.67px] w-[1493.333px]" data-node-id="1:147" data-name="Work row / 0" style="position:absolute;height:82.667px;left:213.33px;overflow:hidden;top:1054.67px;width:1493.333px">
+          <p class="absolute left-0 text-[#999] text-[16px] top-[29.33px]" data-node-id="1:148" style="position:absolute;left:0;color:#999;font-size:16px;top:29.33px">
+            01
+          </p>
+          <p class="absolute left-[93.33px] text-[#161616] text-[21.333px] top-[26.67px]" data-node-id="1:149" style="position:absolute;left:93.33px;color:#161616;font-size:21.333px;top:26.67px">
+            织境・共生未来毕业展全案设计
+          </p>
+          <p class="absolute left-[946.67px] text-[#999] text-[16px] top-[29.33px]" data-node-id="1:150" style="position:absolute;left:946.67px;color:#999;font-size:16px;top:29.33px">
+            Full-case design
+          </p>
+          <p class="absolute left-[1333.33px] text-[#999] text-[16px] top-[29.33px]" data-node-id="1:151" style="position:absolute;left:1333.33px;color:#999;font-size:16px;top:29.33px">
+            2026
+          </p>
+          <p class="absolute left-[1453.33px] text-[#161616] text-[21.333px] top-[26.67px]" data-node-id="1:152" style="position:absolute;left:1453.33px;color:#161616;font-size:21.333px;top:26.67px">
+            ↗
+          </p>
+        </div>
+        <div class="absolute h-[82.667px] left-[213.33px] overflow-clip top-[1140px] w-[1493.333px]" data-node-id="1:153" data-name="Work row / 1" style="position:absolute;height:82.667px;left:213.33px;overflow:hidden;top:1140px;width:1493.333px">
+          <p class="absolute left-0 text-[#999] text-[16px] top-[29.33px]" data-node-id="1:154" style="position:absolute;left:0;color:#999;font-size:16px;top:29.33px">
+            02
+          </p>
+          <p class="absolute left-[93.33px] text-[#161616] text-[21.333px] top-[26.67px]" data-node-id="1:155" style="position:absolute;left:93.33px;color:#161616;font-size:21.333px;top:26.67px">
+            陶行知文创品牌形象设计
+          </p>
+          <p class="absolute left-[946.67px] text-[#999] text-[16px] top-[29.33px]" data-node-id="1:156" style="position:absolute;left:946.67px;color:#999;font-size:16px;top:29.33px">Brand Image Design </p>
+          <p class="absolute left-[1333.33px] text-[#999] text-[16px] top-[29.33px]" data-node-id="1:157" style="position:absolute;left:1333.33px;color:#999;font-size:16px;top:29.33px">
+            2026
+          </p>
+          <p class="absolute left-[1453.33px] text-[#161616] text-[21.333px] top-[26.67px]" data-node-id="1:158" style="position:absolute;left:1453.33px;color:#161616;font-size:21.333px;top:26.67px">
+            ↗
+          </p>
+        </div>
+        <div class="absolute h-[82.667px] left-[213px] overflow-clip top-[1224px] w-[1493.333px]" data-node-id="1:159" data-name="Work row / 4" style="position:absolute;height:82.667px;left:213px;overflow:hidden;top:1224px;width:1493.333px">
+          <p class="absolute left-0 text-[#999] text-[16px] top-[29.33px]" data-node-id="1:160" style="position:absolute;left:0;color:#999;font-size:16px;top:29.33px">
+            03
+          </p>
+          <p class="absolute left-[93.33px] text-[#161616] text-[21.333px] top-[26.67px]" data-node-id="1:161" style="position:absolute;left:93.33px;color:#161616;font-size:21.333px;top:26.67px">
+            三星堆网页设计
+          </p>
+          <p class="absolute left-[946.67px] text-[#999] text-[16px] top-[29.33px]" data-node-id="1:162" style="position:absolute;left:946.67px;color:#999;font-size:16px;top:29.33px">
+            Web Design
+          </p>
+          <p class="absolute left-[1333.33px] text-[#999] text-[16px] top-[29.33px]" data-node-id="1:163" style="position:absolute;left:1333.33px;color:#999;font-size:16px;top:29.33px">
+            2026
+          </p>
+          <p class="absolute left-[1453.33px] text-[#161616] text-[21.333px] top-[26.67px]" data-node-id="1:164" style="position:absolute;left:1453.33px;color:#161616;font-size:21.333px;top:26.67px">
+            ↗
+          </p>
+        </div>
+      </div>
+      <div class="absolute bg-white h-[106.667px] left-0 top-[1546.67px] w-[1.333px]" data-node-id="1:165" data-name="Bottom breathing room" style="position:absolute;background-color:#fff;height:106.667px;left:0;top:1546.67px;width:1.333px"></div>
+      <div class="absolute bg-white border-[#e9e9e9] border-[1.333px] border-solid content-stretch flex gap-[10.667px] h-[80px] items-center left-[32px] overflow-clip pl-[24px] pr-[13.333px] py-[13.333px] top-[32px]" data-node-id="1:166" data-name="Navigation / Fixed" style="position:absolute;background-color:#fff;border-color:#e9e9e9;border-width:1.333px;border-style:solid;align-content:stretch;display:flex;gap:10.667px;height:80px;align-items:center;left:32px;overflow:hidden;padding-left:24px;padding-right:13.333px;padding-top:13.333px;padding-bottom:13.333px;top:32px">
+        <p class="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic relative shrink-0 text-[#161616] text-[26.667px] whitespace-nowrap" data-node-id="1:167" style="word-break:break-word;font-weight:700;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:26.667px;white-space:nowrap">
+          (Shuuu™)
+        </p>
+        <div class="bg-[#161616] h-[50.667px] relative shrink-0 w-[184px]" data-node-id="1:168" data-name="Nav item 0" style="background-color:#161616;height:50.667px;position:relative;flex-shrink:0;width:184px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[184px]" data-node-id="I1:168;227:501" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[16px] text-center text-white whitespace-nowrap" data-node-id="I1:168;227:501;514:10849" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;font-size:16px;text-align:center;color:#fff;white-space:nowrap'>
+              PROJECT
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[173.333px]" data-node-id="1:169" data-name="Nav item 3" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:173.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[173.333px]" data-node-id="I1:169;227:504" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:173.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:169;227:504;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              INFORMATION
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[184px]" data-node-id="1:170" data-name="Nav item 3" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:184px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[184px]" data-node-id="I1:170;1242:3" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:170;1242:3;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              SKILL
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[149.333px]" data-node-id="1:171" data-name="Nav item 2" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:149.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[149.333px]" data-node-id="I1:171;227:509" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:149.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:171;227:509;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              CONTACT ↗
+            </p>
+          </div>
+        </div>
+      </div>
+    </div><div class="bg-white relative size-full" data-node-id="1:172" data-name="03 / info" style="background-color:#fff;position:relative;width:100%;height:100%" data-panel="1:172">
+      <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[53.33px] not-italic text-[#161616] text-[24px] top-[1306.67px] whitespace-nowrap" data-node-id="1:173" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:53.33px;font-style:normal;color:#161616;font-size:24px;top:1306.67px;white-space:nowrap">
+        START A CONVERSATION ↗
+      </p>
+      <div class="absolute bg-white h-[120px] left-0 top-[1413.33px] w-[1.333px]" data-node-id="1:174" data-name="Bottom space" style="position:absolute;background-color:#fff;height:120px;left:0;top:1413.33px;width:1.333px"></div>
+      <div class="absolute contents left-[183px] top-[284px]" data-node-id="1:175" style="position:absolute;display:contents;left:183px;top:284px">
+        <div class="absolute content-stretch flex items-center justify-center left-[656px] p-[10px] top-[493px]" data-node-id="1:176" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:656px;padding:10px;top:493px">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#a7a7a7] text-[24px] whitespace-nowrap" data-node-id="1:177" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#a7a7a7;font-size:24px;white-space:nowrap">
+            PROFILE
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[656px] p-[10px] top-[290px]" data-node-id="1:178" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:656px;padding:10px;top:290px">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#a7a7a7] text-[24px] whitespace-nowrap" data-node-id="1:179" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#a7a7a7;font-size:24px;white-space:nowrap">
+            EDUCATION
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[656px] p-[10px] top-[546px]" data-node-id="1:180" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:656px;padding:10px;top:546px">
+          <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative shrink-0 text-[#a7a7a7] text-[24px] whitespace-nowrap" data-node-id="1:181" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#a7a7a7;font-size:24px;white-space:nowrap">
+            出生年份
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[656px] p-[10px] top-[586px]" data-node-id="1:182" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:656px;padding:10px;top:586px">
+          <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative shrink-0 text-[#a7a7a7] text-[24px] whitespace-nowrap" data-node-id="1:183" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#a7a7a7;font-size:24px;white-space:nowrap">
+            所在地
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[656px] p-[10px] top-[626px]" data-node-id="1:184" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:656px;padding:10px;top:626px">
+          <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative shrink-0 text-[#a7a7a7] text-[24px] whitespace-nowrap" data-node-id="1:185" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#a7a7a7;font-size:24px;white-space:nowrap">
+            邮箱
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[789px] p-[10px] top-[546px]" data-node-id="1:186" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:789px;padding:10px;top:546px">
+          <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative shrink-0 text-[24px] text-black whitespace-nowrap" data-node-id="1:187" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;flex-shrink:0;font-size:24px;color:#000;white-space:nowrap">
+            2004.11.5
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[654px] p-[10px] top-[345px]" data-node-id="1:188" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:654px;padding:10px;top:345px">
+          <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative shrink-0 text-[24px] text-black whitespace-nowrap" data-node-id="1:189" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;flex-shrink:0;font-size:24px;color:#000;white-space:nowrap">
+            重庆对外经贸学院
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[656px] p-[10px] top-[387px]" data-node-id="1:190" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:656px;padding:10px;top:387px">
+          <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative shrink-0 text-[24px] text-black whitespace-nowrap" data-node-id="1:191" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;flex-shrink:0;font-size:24px;color:#000;white-space:nowrap">
+            视觉传达设计/本科
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[789px] p-[10px] top-[586px]" data-node-id="1:192" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:789px;padding:10px;top:586px">
+          <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative shrink-0 text-[24px] text-black whitespace-nowrap" data-node-id="1:193" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;flex-shrink:0;font-size:24px;color:#000;white-space:nowrap">
+            重庆
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[789px] p-[10px] top-[626px]" data-node-id="1:194" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:789px;padding:10px;top:626px">
+          <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative shrink-0 text-[24px] text-black whitespace-nowrap" data-node-id="1:195" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;flex-shrink:0;font-size:24px;color:#000;white-space:nowrap">
+            dengshuyue2004@163.com
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[656px] p-[10px] top-[725px]" data-node-id="1:196" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:656px;padding:10px;top:725px">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#a7a7a7] text-[24px] whitespace-nowrap" data-node-id="1:197" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#a7a7a7;font-size:24px;white-space:nowrap">
+            DESIGN TOOL
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[656px] p-[10px] top-[774px]" data-node-id="1:198" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:656px;padding:10px;top:774px">
+          <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative shrink-0 text-[24px] text-black whitespace-nowrap" data-node-id="1:199" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;flex-shrink:0;font-size:24px;color:#000;white-space:nowrap">
+            Photoshop/IIIustrator/Indesign/Figma
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[1213px] p-[10px] top-[287px]" data-node-id="1:200" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:1213px;padding:10px;top:287px">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#a7a7a7] text-[24px] whitespace-nowrap" data-node-id="1:201" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#a7a7a7;font-size:24px;white-space:nowrap">DESIGN DIRECTION </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[1213px] p-[10px] top-[342px]" data-node-id="1:202" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:1213px;padding:10px;top:342px">
+          <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative shrink-0 text-[24px] text-black whitespace-nowrap" data-node-id="1:203" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;flex-shrink:0;font-size:24px;color:#000;white-space:nowrap">
+            视觉设计/文创设计/品牌设计/UI设计
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[1213px] p-[10px] top-[725px]" data-node-id="1:204" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:1213px;padding:10px;top:725px">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#a7a7a7] text-[24px] whitespace-nowrap" data-node-id="1:205" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#a7a7a7;font-size:24px;white-space:nowrap">
+            LANGUAGES
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[1213px] p-[10px] top-[774px]" data-node-id="1:206" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:1213px;padding:10px;top:774px">
+          <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative shrink-0 text-[24px] text-black whitespace-nowrap" data-node-id="1:207" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;flex-shrink:0;font-size:24px;color:#000;white-space:nowrap">
+            CET-4
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[1213px] p-[10px] top-[422px]" data-node-id="1:208" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:1213px;padding:10px;top:422px">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#a7a7a7] text-[24px] whitespace-nowrap" data-node-id="1:209" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#a7a7a7;font-size:24px;white-space:nowrap">
+            EXPERIENCE
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[1213px] p-[10px] top-[477px]" data-node-id="1:210" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:1213px;padding:10px;top:477px">
+          <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative shrink-0 text-[24px] text-black whitespace-nowrap" data-node-id="1:211" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;flex-shrink:0;font-size:24px;color:#000;white-space:nowrap">
+            德阳旌渝数字科技有限责任公司｜视觉设计助理
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[1213px] p-[10px] top-[527px]" data-node-id="1:212" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:1213px;padding:10px;top:527px">
+          <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative shrink-0 text-[24px] text-black whitespace-nowrap" data-node-id="1:213" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;flex-shrink:0;font-size:24px;color:#000;white-space:nowrap">
+            2026.7-2026.9
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[1213px] p-[10px] top-[582px]" data-node-id="1:214" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:1213px;padding:10px;top:582px">
+          <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative shrink-0 text-[24px] text-black w-[472px]" data-node-id="1:215" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;flex-shrink:0;font-size:24px;color:#000;width:472px">
+            AI 漫剧项目｜负责人物风格设定、成片后期剪辑，完成单集漫剧产出
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[1213px] p-[10px] top-[656px]" data-node-id="1:216" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:1213px;padding:10px;top:656px">
+          <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative shrink-0 text-[24px] text-black whitespace-nowrap" data-node-id="1:217" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;flex-shrink:0;font-size:24px;color:#000;white-space:nowrap">
+            2026.1-2026.2
+          </p>
+        </div>
+        <div class="absolute bg-white content-stretch flex flex-col items-start left-[183px] top-[284px] w-[402px]" data-node-id="1:218" style="position:absolute;background-color:#fff;align-content:stretch;display:flex;flex-direction:column;align-items:flex-start;left:183px;top:284px;width:402px">
+          <div class="h-[537px] relative shrink-0 w-[433px]" data-node-id="1:219" style="height:537px;position:relative;flex-shrink:0;width:433px">
+            <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/bc1fd83b-da4c-4ce4-abf4-4bf264015545.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+          </div>
+          <div class="content-stretch flex items-center justify-center p-[10px] relative shrink-0" data-node-id="1:220" style="align-content:stretch;display:flex;align-items:center;justify-content:center;padding:10px;position:relative;flex-shrink:0">
+            <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[48px] text-black whitespace-nowrap" data-node-id="1:221" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;font-size:48px;color:#000;white-space:nowrap">
+              DENGSHUYUE
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bg-white border-[#e9e9e9] border-[1.333px] border-solid content-stretch flex gap-[10.667px] h-[80px] items-center left-[32px] overflow-clip pl-[24px] pr-[13.333px] py-[13.333px] top-[32px]" data-node-id="1:222" data-name="Navigation / Fixed" style="position:absolute;background-color:#fff;border-color:#e9e9e9;border-width:1.333px;border-style:solid;align-content:stretch;display:flex;gap:10.667px;height:80px;align-items:center;left:32px;overflow:hidden;padding-left:24px;padding-right:13.333px;padding-top:13.333px;padding-bottom:13.333px;top:32px">
+        <p class="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic relative shrink-0 text-[#161616] text-[26.667px] whitespace-nowrap" data-node-id="1:223" style="word-break:break-word;font-weight:700;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:26.667px;white-space:nowrap">
+          (Shuuu™)
+        </p>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[184px]" data-node-id="1:224" data-name="Nav item 0" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:184px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[184px]" data-node-id="I1:224;227:499" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:224;227:499;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              PROJECT
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#161616] h-[50.667px] relative shrink-0 w-[173.333px]" data-node-id="1:225" data-name="Nav item 1" style="background-color:#161616;height:50.667px;position:relative;flex-shrink:0;width:173.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[173.333px]" data-node-id="I1:225;227:506" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:173.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[16px] text-center text-white whitespace-nowrap" data-node-id="I1:225;227:506;514:10849" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;font-size:16px;text-align:center;color:#fff;white-space:nowrap'>
+              INFORMATION
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[184px]" data-node-id="1:226" data-name="Nav item 3" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:184px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[184px]" data-node-id="I1:226;1242:3" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:226;1242:3;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              SKILL
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[149.333px]" data-node-id="1:227" data-name="Nav item 2" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:149.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[149.333px]" data-node-id="I1:227;227:509" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:149.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:227;227:509;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              CONTACT ↗
+            </p>
+          </div>
+        </div>
+      </div>
+    </div><div class="bg-white relative size-full" data-node-id="1:228" data-name="04 / contact" style="background-color:#fff;position:relative;width:100%;height:100%" data-panel="1:228">
+      <div class="absolute contents left-[719px] top-[508px]" data-node-id="1:229" style="position:absolute;display:contents;left:719px;top:508px">
+        <div class="absolute content-stretch flex items-center justify-center left-[719px] p-[10px] top-[634px]" data-node-id="1:230" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:719px;padding:10px;top:634px">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[0] not-italic relative shrink-0 text-[#a7a7a7] text-[0px] whitespace-nowrap" data-node-id="1:231" style="word-break:break-word;font-weight:400;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#a7a7a7;font-size:0px;white-space:nowrap">
+            <span class="leading-[normal] text-[32px]" style="line-height:normal;font-size:32px">Wetchat</span>
+            <span class="leading-[normal] text-[24px]" style="line-height:normal;font-size:24px">：</span>
+          </p>
+        </div>
+        <p class="[word-break:break-word] absolute font-['Inter:Light'] font-light leading-[normal] left-[897px] not-italic text-[32px] text-black top-[644px] whitespace-nowrap" data-node-id="1:232" style="word-break:break-word;position:absolute;font-weight:300;line-height:normal;left:897px;font-style:normal;font-size:32px;color:#000;top:644px;white-space:nowrap">
+          d_sy11-
+        </p>
+        <div class="absolute content-stretch flex items-center justify-center left-[750px] p-[10px] top-[571px]" data-node-id="1:233" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:750px;padding:10px;top:571px">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[0] not-italic relative shrink-0 text-[#a7a7a7] text-[0px] whitespace-nowrap" data-node-id="1:234" style="word-break:break-word;font-weight:400;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#a7a7a7;font-size:0px;white-space:nowrap">
+            <span class="leading-[normal] text-[32px]" style="line-height:normal;font-size:32px">E-mail</span>
+            <span class="leading-[normal] text-[24px]" style="line-height:normal;font-size:24px">：</span>
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[800px] p-[10px] top-[508px]" data-node-id="1:235" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:800px;padding:10px;top:508px">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[0] not-italic relative shrink-0 text-[#a7a7a7] text-[0px] whitespace-nowrap" data-node-id="1:236" style="word-break:break-word;font-weight:400;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#a7a7a7;font-size:0px;white-space:nowrap">
+            <span class="leading-[normal] text-[32px]" style="line-height:normal;font-size:32px">Tel</span>
+            <span class="leading-[normal] text-[24px]" style="line-height:normal;font-size:24px">：</span>
+          </p>
+        </div>
+        <p class="[word-break:break-word] absolute font-['Inter:Light'] font-light leading-[normal] left-[897px] not-italic text-[32px] text-black top-[518px] whitespace-nowrap" data-node-id="1:237" style="word-break:break-word;position:absolute;font-weight:300;line-height:normal;left:897px;font-style:normal;font-size:32px;color:#000;top:518px;white-space:nowrap">
+          13228508775
+        </p>
+        <p class="[word-break:break-word] absolute font-['Inter:Light'] font-light leading-[normal] left-[897px] not-italic text-[32px] text-black top-[582px] whitespace-nowrap" data-node-id="1:238" style="word-break:break-word;position:absolute;font-weight:300;line-height:normal;left:897px;font-style:normal;font-size:32px;color:#000;top:582px;white-space:nowrap">
+          dengshuyue2004@163.COM
+        </p>
+      </div>
+      <div class="absolute bg-white border-[#e9e9e9] border-[1.333px] border-solid content-stretch flex gap-[10.667px] h-[80px] items-center left-[32px] overflow-clip pl-[24px] pr-[13.333px] py-[13.333px] top-[32px]" data-node-id="1:239" data-name="Navigation / Fixed" style="position:absolute;background-color:#fff;border-color:#e9e9e9;border-width:1.333px;border-style:solid;align-content:stretch;display:flex;gap:10.667px;height:80px;align-items:center;left:32px;overflow:hidden;padding-left:24px;padding-right:13.333px;padding-top:13.333px;padding-bottom:13.333px;top:32px">
+        <p class="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic relative shrink-0 text-[#161616] text-[26.667px] whitespace-nowrap" data-node-id="1:240" style="word-break:break-word;font-weight:700;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:26.667px;white-space:nowrap">
+          (Shuuu™)
+        </p>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[184px]" data-node-id="1:241" data-name="Nav item 0" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:184px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[184px]" data-node-id="I1:241;227:499" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:241;227:499;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              PROJECT
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[173.333px]" data-node-id="1:242" data-name="Nav item 1" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:173.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[173.333px]" data-node-id="I1:242;227:504" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:173.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:242;227:504;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              INFORMATION
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[184px]" data-node-id="1:243" data-name="Nav item 3" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:184px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[184px]" data-node-id="I1:243;1242:3" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:243;1242:3;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              SKILL
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#161616] h-[50.667px] relative shrink-0 w-[149.333px]" data-node-id="1:244" data-name="Nav item 2" style="background-color:#161616;height:50.667px;position:relative;flex-shrink:0;width:149.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[149.333px]" data-node-id="I1:244;227:511" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:149.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[16px] text-center text-white whitespace-nowrap" data-node-id="I1:244;227:511;514:10849" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;font-size:16px;text-align:center;color:#fff;white-space:nowrap'>
+              CONTACT ↗
+            </p>
+          </div>
+        </div>
+      </div>
+    </div><div class="bg-white relative size-full" data-node-id="1:245" data-name="05 / project-0" style="background-color:#fff;position:relative;width:100%;height:100%" data-panel="1:245">
+      <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[53.33px] not-italic text-[#999] text-[16px] top-[213.33px] whitespace-nowrap" data-node-id="1:246" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:53.33px;font-style:normal;color:#999;font-size:16px;top:213.33px;white-space:nowrap">
+        PROJECT / 01
+      </p>
+      <div class="absolute bg-white left-0 opacity-0 size-[1.333px] top-0" data-node-id="1:247" data-name="Top anchor" style="position:absolute;background-color:#fff;left:0;opacity:0;width:1.333px;height:1.333px;top:0"></div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[264px] overflow-clip top-[574px] w-[270px]" data-node-id="1:248" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:264px;overflow:hidden;top:574px;width:270px">
+        <div class="absolute h-[125px] left-[32px] top-[6px] w-[207px]" data-node-id="1:249" data-name="毕业展全案设计-1 1" style="position:absolute;height:125px;left:32px;top:6px;width:207px">
+          <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/14bb2624-12bc-4b17-bc76-7cd3b1cb6218.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+        </div>
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[636px] top-[574px] w-[270px]" data-node-id="1:250" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:636px;top:574px;width:270px"></div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[1008px] overflow-clip top-[574px] w-[270px]" data-node-id="1:251" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:1008px;overflow:hidden;top:574px;width:270px">
+        <div class="absolute h-[133px] left-[93px] top-[2px] w-[89px]" data-node-id="1:252" data-name="毕业展全案设计-海报 1" style="position:absolute;height:133px;left:93px;top:2px;width:89px">
+          <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/00d6542d-7d38-4a9a-bca4-5621d7fc454b.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+        </div>
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[1380px] overflow-clip top-[574px] w-[270px]" data-node-id="1:253" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:1380px;overflow:hidden;top:574px;width:270px">
+        <div class="absolute h-[93px] left-[39px] top-[22px] w-[192px]" data-node-id="1:254" data-name="毕业展全案设计-门票 1" style="position:absolute;height:93px;left:39px;top:22px;width:192px">
+          <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/e91ed49c-eea8-4b7f-93a2-76920e68b560.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+        </div>
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[264px] overflow-clip top-[776px] w-[270px]" data-node-id="1:255" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:264px;overflow:hidden;top:776px;width:270px">
+        <div class="absolute h-[118px] left-[63px] top-[9px] w-[135px]" data-node-id="1:256" data-name="毕业展全案设计-朋友圈图文广告 1" style="position:absolute;height:118px;left:63px;top:9px;width:135px">
+          <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/c9400a55-074d-43f1-83d9-732b23452e9d.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+        </div>
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[264px] overflow-clip top-[992px] w-[270px]" data-node-id="1:257" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:264px;overflow:hidden;top:992px;width:270px">
+        <div class="absolute h-[120px] left-[83px] top-[8px] w-[105px]" data-node-id="1:258" data-name="毕业展全案设计-手提袋 1" style="position:absolute;height:120px;left:83px;top:8px;width:105px">
+          <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/1e0dfe78-602d-4367-9221-650bc85531f1.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+        </div>
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[264px] top-[1208px] w-[270px]" data-node-id="1:259" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:264px;top:1208px;width:270px"></div>
+      <div class="absolute h-[107px] left-[327px] top-[1223px] w-[160px]" data-node-id="1:260" data-name="毕业展全案设计-作品标签 1" style="position:absolute;height:107px;left:327px;top:1223px;width:160px">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/5d548043-9a32-4e98-8a66-4e1368f4eec9.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[636px] top-[776px] w-[270px]" data-node-id="1:261" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:636px;top:776px;width:270px"></div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[636px] overflow-clip top-[992px] w-[270px]" data-node-id="1:262" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:636px;overflow:hidden;top:992px;width:270px">
+        <div class="absolute h-[130px] left-[91px] top-[3px] w-[92px]" data-node-id="1:263" data-name="毕业展全案设计-台卡 1" style="position:absolute;height:130px;left:91px;top:3px;width:92px">
+          <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/57705d04-1b9d-4923-96fd-b75e868c1ff7.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+        </div>
+      </div>
+      <div class="absolute h-[108px] left-[697px] top-[790px] w-[161px]" data-node-id="1:264" data-name="毕业展全案设计-前言 1" style="position:absolute;height:108px;left:697px;top:790px;width:161px">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/bbc5cfcf-2194-44fd-a548-99f1994124b7.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[1008px] overflow-clip top-[776px] w-[270px]" data-node-id="1:265" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:1008px;overflow:hidden;top:776px;width:270px">
+        <div class="absolute h-[120px] left-[98px] top-[8px] w-[85px]" data-node-id="1:266" data-name="毕业展全案设计-收藏证书 1" style="position:absolute;height:120px;left:98px;top:8px;width:85px">
+          <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/d3a3e0d5-5fc7-4cf3-8cf5-31392fa89998.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+        </div>
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[1008px] overflow-clip top-[992px] w-[270px]" data-node-id="1:267" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:1008px;overflow:hidden;top:992px;width:270px">
+        <div class="absolute h-[126px] left-[88px] top-[5px] w-[94px]" data-node-id="1:268" data-name="毕业展全案设计-小红书封面广告 1" style="position:absolute;height:126px;left:88px;top:5px;width:94px">
+          <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/333804b1-b176-4aa3-9e86-06e56f39fde8.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+        </div>
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[1380px] top-[776px] w-[270px]" data-node-id="1:269" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:1380px;top:776px;width:270px"></div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[1380px] top-[992px] w-[270px]" data-node-id="1:270" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:1380px;top:992px;width:270px"></div>
+      <div class="absolute h-[121px] left-[1473px] top-[1000px] w-[85px]" data-node-id="1:271" data-name="毕业展全案设计-邀请函 1" style="position:absolute;height:121px;left:1473px;top:1000px;width:85px">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/eb965977-7b0c-4867-b061-da306858cf19.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+      </div>
+      <div class="absolute h-[37px] left-[1390px] top-[826px] w-[251px]" data-node-id="1:272" data-name="毕业展全案设计-横幅 1" style="position:absolute;height:37px;left:1390px;top:826px;width:251px">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/9fadd1c3-0666-4969-adeb-539a5c13f002.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+      </div>
+      <div class="absolute bg-[#e9e9e9] h-[1.333px] left-[67px] top-[1591px] w-[1813.333px]" data-node-id="1:273" data-name="Next divider" style="position:absolute;background-color:#e9e9e9;height:1.333px;left:67px;top:1591px;width:1813.333px"></div>
+      <div class="absolute h-[137px] left-[742px] top-[574px] w-[51px]" data-node-id="1:274" data-name="毕业展全案设计-道旗 1" style="position:absolute;height:137px;left:742px;top:574px;width:51px">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/1747f92c-1f45-4f8f-bbe4-0f0f1f52c0a6.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+      </div>
+      <div class="absolute bg-white h-[133.333px] left-0 top-[2640px] w-[1.333px]" data-node-id="1:275" data-name="Bottom space" style="position:absolute;background-color:#fff;height:133.333px;left:0;top:2640px;width:1.333px"></div>
+      <div class="absolute contents left-[232px] top-[270px]" data-node-id="1:276" style="position:absolute;display:contents;left:232px;top:270px">
+        <div class="absolute content-stretch flex items-center justify-center left-[232px] p-[10px] top-[270px]" data-node-id="1:277" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:232px;padding:10px;top:270px">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[48px] text-black whitespace-nowrap" data-node-id="1:278" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;font-size:48px;color:#000;white-space:nowrap">
+            织境・共生未来毕业展全案设计
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[232px] p-[10px] top-[384px]" data-node-id="1:279" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:232px;padding:10px;top:384px">
+          <div class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[0] not-italic relative shrink-0 text-[#a7a7a7] text-[24px] whitespace-nowrap" data-node-id="1:280" style="word-break:break-word;font-weight:400;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#a7a7a7;font-size:24px;white-space:nowrap">
+            <p class="leading-[35px] mb-0" style="line-height:35px;margin-bottom:0">“织境·共生未来”是一项毕业展全案设计，以“织”所代表的连接与共生为核心概念，经过主题调研与视觉推演，建立统一的展览视觉系统，</p>
+            <p class="leading-[35px] mb-0" style="line-height:35px;margin-bottom:0">并延展至主海报、线上传播、邀请函、入场券、道旗、台卡、作品标签及纪念物料等多个场景，完成从主题表达、视觉识别到现场落地</p>
+            <p class="leading-[35px]" style="line-height:35px">的完整设计。</p>
+          </div>
+        </div>
+      </div>
+      <div class="absolute h-[137px] left-[742px] top-[776px] w-[51px]" data-node-id="1:281" data-name="毕业展全案设计-道旗 2" style="position:absolute;height:137px;left:742px;top:776px;width:51px"></div>
+      <div class="absolute h-[137px] left-[742px] top-[992px] w-[51px]" data-node-id="1:282" data-name="毕业展全案设计-道旗 3" style="position:absolute;height:137px;left:742px;top:992px;width:51px"></div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%-685px)] top-[532px]" data-node-id="1:283" style="position:absolute;display:contents;left:calc(50% - 685px);top:532px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%-685px)] p-[10px] top-[532px] w-[40px]" data-node-id="1:284" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% - 685px);padding:10px;top:532px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:285" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            01
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%-685px)] top-[732px]" data-node-id="1:286" style="position:absolute;display:contents;left:calc(50% - 685px);top:732px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%-685px)] p-[10px] top-[732px] w-[40px]" data-node-id="1:287" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% - 685px);padding:10px;top:732px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:288" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            05
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%-685px)] top-[941px]" data-node-id="1:289" style="position:absolute;display:contents;left:calc(50% - 685px);top:941px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%-685px)] p-[10px] top-[941px] w-[40px]" data-node-id="1:290" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% - 685px);padding:10px;top:941px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:291" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            09
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%-685px)] top-[1157px]" data-node-id="1:292" style="position:absolute;display:contents;left:calc(50% - 685px);top:1157px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%-685px)] p-[10px] top-[1157px] w-[40px]" data-node-id="1:293" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% - 685px);padding:10px;top:1157px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:294" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            13
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%-312px)] top-[532px]" data-node-id="1:295" style="position:absolute;display:contents;left:calc(50% - 312px);top:532px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%-312px)] p-[10px] top-[532px] w-[40px]" data-node-id="1:296" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% - 312px);padding:10px;top:532px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:297" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            02
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%-312px)] top-[732px]" data-node-id="1:298" style="position:absolute;display:contents;left:calc(50% - 312px);top:732px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%-312px)] p-[10px] top-[732px] w-[40px]" data-node-id="1:299" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% - 312px);padding:10px;top:732px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:300" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            06
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%-312px)] top-[941px]" data-node-id="1:301" style="position:absolute;display:contents;left:calc(50% - 312px);top:941px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%-312px)] p-[10px] top-[941px] w-[40px]" data-node-id="1:302" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% - 312px);padding:10px;top:941px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:303" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            10
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%+432px)] top-[532px]" data-node-id="1:304" style="position:absolute;display:contents;left:calc(50% + 432px);top:532px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%+432px)] p-[10px] top-[532px] w-[40px]" data-node-id="1:305" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% + 432px);padding:10px;top:532px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:306" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            04
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%+432px)] top-[732px]" data-node-id="1:307" style="position:absolute;display:contents;left:calc(50% + 432px);top:732px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%+432px)] p-[10px] top-[732px] w-[40px]" data-node-id="1:308" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% + 432px);padding:10px;top:732px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:309" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            08
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%+432px)] top-[941px]" data-node-id="1:310" style="position:absolute;display:contents;left:calc(50% + 432px);top:941px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%+432px)] p-[10px] top-[941px] w-[40px]" data-node-id="1:311" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% + 432px);padding:10px;top:941px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:312" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            12
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%+61px)] top-[532px]" data-node-id="1:313" style="position:absolute;display:contents;left:calc(50% + 61px);top:532px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%+61px)] p-[10px] top-[532px] w-[40px]" data-node-id="1:314" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% + 61px);padding:10px;top:532px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:315" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            03
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%+61px)] top-[732px]" data-node-id="1:316" style="position:absolute;display:contents;left:calc(50% + 61px);top:732px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%+61px)] p-[10px] top-[732px] w-[40px]" data-node-id="1:317" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% + 61px);padding:10px;top:732px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:318" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            07
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%+61px)] top-[941px]" data-node-id="1:319" style="position:absolute;display:contents;left:calc(50% + 61px);top:941px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%+61px)] p-[10px] top-[941px] w-[40px]" data-node-id="1:320" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% + 61px);padding:10px;top:941px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:321" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            11
+          </p>
+        </div>
+      </div>
+      <div class="absolute h-[53.333px] left-[1729px] overflow-clip top-[160px] w-[253.333px]" data-node-id="1:322" data-name="Project actions / Fixed" style="position:absolute;height:53.333px;left:1729px;overflow:hidden;top:160px;width:253.333px">
+        <div class="absolute bg-[#f3f3f3] h-[53.333px] left-0 overflow-clip top-0 w-[122.667px]" data-node-id="1:323" data-name="Index" style="position:absolute;background-color:#f3f3f3;height:53.333px;left:0;overflow:hidden;top:0;width:122.667px">
+          <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[29.67px] not-italic text-[#161616] text-[16px] top-[17.67px] whitespace-nowrap" data-node-id="1:324" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:29.67px;font-style:normal;color:#161616;font-size:16px;top:17.67px;white-space:nowrap">CLOSED </p>
+        </div>
+      </div>
+      <div class="absolute bg-white border-[#e9e9e9] border-[1.333px] border-solid content-stretch flex gap-[10.667px] h-[80px] items-center left-[32px] overflow-clip pl-[24px] pr-[13.333px] py-[13.333px] top-[32px]" data-node-id="1:325" data-name="Navigation / Fixed" style="position:absolute;background-color:#fff;border-color:#e9e9e9;border-width:1.333px;border-style:solid;align-content:stretch;display:flex;gap:10.667px;height:80px;align-items:center;left:32px;overflow:hidden;padding-left:24px;padding-right:13.333px;padding-top:13.333px;padding-bottom:13.333px;top:32px">
+        <p class="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic relative shrink-0 text-[#161616] text-[26.667px] whitespace-nowrap" data-node-id="1:326" style="word-break:break-word;font-weight:700;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:26.667px;white-space:nowrap">
+          (Shuuu™)
+        </p>
+        <div class="bg-[#161616] h-[50.667px] relative shrink-0 w-[184px]" data-node-id="1:327" data-name="Nav item 0" style="background-color:#161616;height:50.667px;position:relative;flex-shrink:0;width:184px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[184px]" data-node-id="I1:327;227:501" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[16px] text-center text-white whitespace-nowrap" data-node-id="I1:327;227:501;514:10849" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;font-size:16px;text-align:center;color:#fff;white-space:nowrap'>
+              PROJECT
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[173.333px]" data-node-id="1:328" data-name="Nav item 1" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:173.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[173.333px]" data-node-id="I1:328;227:504" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:173.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:328;227:504;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              INFORMATION
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[184px]" data-node-id="1:329" data-name="Nav item 3" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:184px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[184px]" data-node-id="I1:329;1242:3" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:329;1242:3;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              SKILL
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[149.333px]" data-node-id="1:330" data-name="Nav item 2" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:149.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[149.333px]" data-node-id="I1:330;227:509" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:149.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:330;227:509;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              CONTACT ↗
+            </p>
+          </div>
+        </div>
+      </div>
+    </div><div class="bg-white relative size-full" data-node-id="1:331" data-name="07 / project-2" style="background-color:#fff;position:relative;width:100%;height:100%" data-panel="1:331">
+      <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[53.33px] not-italic text-[#999] text-[16px] top-[213.33px] whitespace-nowrap" data-node-id="1:332" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:53.33px;font-style:normal;color:#999;font-size:16px;top:213.33px;white-space:nowrap">
+        PROJECT / 03
+      </p>
+      <div class="absolute bg-white left-0 opacity-0 size-[1.333px] top-0" data-node-id="1:333" data-name="Top anchor" style="position:absolute;background-color:#fff;left:0;opacity:0;width:1.333px;height:1.333px;top:0"></div>
+      <div class="absolute contents left-[232px] top-[270px]" data-node-id="1:334" style="position:absolute;display:contents;left:232px;top:270px">
+        <div class="absolute content-stretch flex items-center justify-center left-[232px] p-[10px] top-[270px]" data-node-id="1:335" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:232px;padding:10px;top:270px">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[48px] text-black whitespace-nowrap" data-node-id="1:336" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;font-size:48px;color:#000;white-space:nowrap">
+            三星堆博物馆网页设计
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[232px] p-[10px] top-[384px]" data-node-id="1:337" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:232px;padding:10px;top:384px">
+          <div class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[0] not-italic relative shrink-0 text-[#a7a7a7] text-[24px] whitespace-nowrap" data-node-id="1:338" style="word-break:break-word;font-weight:400;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#a7a7a7;font-size:24px;white-space:nowrap">
+            <p class="leading-[35px] mb-0" style="line-height:35px;margin-bottom:0">“三星堆博物馆官网”网页设计以提升博物馆文化传播与观展服务体验为目标，通过对三星堆文物、展览内容与用户浏览需求的梳理，提炼神秘、</p>
+            <p class="leading-[35px] mb-0" style="line-height:35px;margin-bottom:0">厚重的古蜀文化气质，采用黑金、青铜绿与米白色为主色，结合文物影像、材质肌理和清晰的模块化布局，构建具有沉浸感的视觉风格，并完</p>
+            <p class="leading-[35px] mb-0" style="line-height:35px;margin-bottom:0">成开放时间、博物馆简介、展览展示、藏馆文物、咨询公告、社会教育及文创精品等页面内容设计，形成集文化展示、信息查询与参观服务于</p>
+            <p class="leading-[35px]" style="line-height:35px">一体的博物馆官网界面。</p>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bg-white h-[133.333px] left-0 top-[2640px] w-[1.333px]" data-node-id="1:339" data-name="Bottom space" style="position:absolute;background-color:#fff;height:133.333px;left:0;top:2640px;width:1.333px"></div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[271px] overflow-clip top-[611px] w-[270px]" data-node-id="1:340" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:271px;overflow:hidden;top:611px;width:270px">
+        <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[163.2px] not-italic text-[#694c32] text-[32.64px] top-[788.8px] whitespace-nowrap" data-node-id="1:341" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:163.2px;font-style:normal;color:#694c32;font-size:32.64px;top:788.8px;white-space:nowrap">
+          CONCEPT VISUAL / 2024
+        </p>
+        <div class="absolute h-[117px] left-[31px] top-[10px] w-[208px]" data-node-id="1:342" data-name="三星堆_画板 1 1" style="position:absolute;height:117px;left:31px;top:10px;width:208px">
+          <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/46d785f9-3836-4bbe-9294-72a676dc54dd.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+        </div>
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[271px] overflow-clip top-[814px] w-[270px]" data-node-id="1:343" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:271px;overflow:hidden;top:814px;width:270px">
+        <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[163.2px] not-italic text-[#694c32] text-[32.64px] top-[788.8px] whitespace-nowrap" data-node-id="1:344" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:163.2px;font-style:normal;color:#694c32;font-size:32.64px;top:788.8px;white-space:nowrap">
+          CONCEPT VISUAL / 2024
+        </p>
+        <div class="absolute h-[117px] left-[31px] top-[10px] w-[208px]" data-node-id="1:345" data-name="三星堆-05 1" style="position:absolute;height:117px;left:31px;top:10px;width:208px">
+          <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/32dcead2-5afa-4ba6-b4fa-5761b25bb572.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+        </div>
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[646px] overflow-clip top-[611px] w-[270px]" data-node-id="1:346" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:646px;overflow:hidden;top:611px;width:270px">
+        <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[163.2px] not-italic text-[#694c32] text-[32.64px] top-[788.8px] whitespace-nowrap" data-node-id="1:347" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:163.2px;font-style:normal;color:#694c32;font-size:32.64px;top:788.8px;white-space:nowrap">
+          CONCEPT VISUAL / 2024
+        </p>
+      </div>
+      <div class="absolute h-[117px] left-[677px] top-[622px] w-[208px]" data-node-id="1:348" data-name="三星堆-02 1" style="position:absolute;height:117px;left:677px;top:622px;width:208px">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/c39ef91d-7a8c-4187-b39d-01f5fa724a52.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[646px] overflow-clip top-[814px] w-[270px]" data-node-id="1:349" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:646px;overflow:hidden;top:814px;width:270px">
+        <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[163.2px] not-italic text-[#694c32] text-[32.64px] top-[788.8px] whitespace-nowrap" data-node-id="1:350" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:163.2px;font-style:normal;color:#694c32;font-size:32.64px;top:788.8px;white-space:nowrap">
+          CONCEPT VISUAL / 2024
+        </p>
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[1021px] overflow-clip top-[611px] w-[270px]" data-node-id="1:351" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:1021px;overflow:hidden;top:611px;width:270px">
+        <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[163.2px] not-italic text-[#694c32] text-[32.64px] top-[788.8px] whitespace-nowrap" data-node-id="1:352" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:163.2px;font-style:normal;color:#694c32;font-size:32.64px;top:788.8px;white-space:nowrap">
+          CONCEPT VISUAL / 2024
+        </p>
+      </div>
+      <div class="absolute h-[117px] left-[1052px] top-[622px] w-[208px]" data-node-id="1:353" data-name="三星堆-03 1" style="position:absolute;height:117px;left:1052px;top:622px;width:208px">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/e913158b-c0f4-4291-bc6b-62dd0aa022bf.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[1021px] overflow-clip top-[814px] w-[270px]" data-node-id="1:354" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:1021px;overflow:hidden;top:814px;width:270px">
+        <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[163.2px] not-italic text-[#694c32] text-[32.64px] top-[788.8px] whitespace-nowrap" data-node-id="1:355" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:163.2px;font-style:normal;color:#694c32;font-size:32.64px;top:788.8px;white-space:nowrap">
+          CONCEPT VISUAL / 2024
+        </p>
+        <div class="absolute h-[117px] left-[31px] top-[10px] w-[208px]" data-node-id="1:356" data-name="三星堆-首页-07 1" style="position:absolute;height:117px;left:31px;top:10px;width:208px">
+          <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/7ce2ac52-670d-41da-90da-58179ddbc7ee.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+        </div>
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[137px] left-[1396px] overflow-clip top-[611px] w-[270px]" data-node-id="1:357" data-name="Hero / Replace image" style="position:absolute;background-color:#d9d9d9;height:137px;left:1396px;overflow:hidden;top:611px;width:270px">
+        <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[163.2px] not-italic text-[#694c32] text-[32.64px] top-[788.8px] whitespace-nowrap" data-node-id="1:358" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:163.2px;font-style:normal;color:#694c32;font-size:32.64px;top:788.8px;white-space:nowrap">
+          CONCEPT VISUAL / 2024
+        </p>
+      </div>
+      <div class="absolute h-[117px] left-[1427px] top-[622px] w-[208px]" data-node-id="1:359" data-name="三星堆-04 1" style="position:absolute;height:117px;left:1427px;top:622px;width:208px">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/339252cd-5e62-4218-9966-e0db60ecebdf.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%-676px)] top-[569px]" data-node-id="1:360" style="position:absolute;display:contents;left:calc(50% - 676px);top:569px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%-676px)] p-[10px] top-[569px] w-[40px]" data-node-id="1:361" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% - 676px);padding:10px;top:569px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:362" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            01
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%-676px)] top-[772px]" data-node-id="1:363" style="position:absolute;display:contents;left:calc(50% - 676px);top:772px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%-676px)] p-[10px] top-[772px] w-[40px]" data-node-id="1:364" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% - 676px);padding:10px;top:772px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:365" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            05
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%-303px)] top-[569px]" data-node-id="1:366" style="position:absolute;display:contents;left:calc(50% - 303px);top:569px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%-303px)] p-[10px] top-[569px] w-[40px]" data-node-id="1:367" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% - 303px);padding:10px;top:569px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:368" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            02
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%-303px)] top-[772px]" data-node-id="1:369" style="position:absolute;display:contents;left:calc(50% - 303px);top:772px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%-303px)] p-[10px] top-[772px] w-[40px]" data-node-id="1:370" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% - 303px);padding:10px;top:772px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:371" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            06
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%+441px)] top-[569px]" data-node-id="1:372" style="position:absolute;display:contents;left:calc(50% + 441px);top:569px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%+441px)] p-[10px] top-[569px] w-[40px]" data-node-id="1:373" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% + 441px);padding:10px;top:569px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:374" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            04
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%+70px)] top-[569px]" data-node-id="1:375" style="position:absolute;display:contents;left:calc(50% + 70px);top:569px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%+70px)] p-[10px] top-[569px] w-[40px]" data-node-id="1:376" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% + 70px);padding:10px;top:569px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:377" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            03
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%+70px)] top-[772px]" data-node-id="1:378" style="position:absolute;display:contents;left:calc(50% + 70px);top:772px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%+70px)] p-[10px] top-[772px] w-[40px]" data-node-id="1:379" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% + 70px);padding:10px;top:772px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:380" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            07
+          </p>
+        </div>
+      </div>
+      <div class="absolute h-[117px] left-[677px] top-[824px] w-[208px]" data-node-id="1:381" data-name="三星堆-06 1" style="position:absolute;height:117px;left:677px;top:824px;width:208px">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/983a97cb-d664-4a01-b2e4-f3f1e6fcac0f.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+      </div>
+      <div class="absolute h-[53.333px] left-[1729px] overflow-clip top-[160px] w-[253.333px]" data-node-id="1:382" data-name="Project actions / Fixed" style="position:absolute;height:53.333px;left:1729px;overflow:hidden;top:160px;width:253.333px">
+        <div class="absolute bg-[#f3f3f3] h-[53.333px] left-0 overflow-clip top-0 w-[122.667px]" data-node-id="1:383" data-name="Index" style="position:absolute;background-color:#f3f3f3;height:53.333px;left:0;overflow:hidden;top:0;width:122.667px">
+          <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[29.67px] not-italic text-[#161616] text-[16px] top-[17.67px] whitespace-nowrap" data-node-id="1:384" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:29.67px;font-style:normal;color:#161616;font-size:16px;top:17.67px;white-space:nowrap">
+            CLOSED
+          </p>
+        </div>
+      </div>
+      <div class="absolute bg-white border-[#e9e9e9] border-[1.333px] border-solid content-stretch flex gap-[10.667px] h-[80px] items-center left-[32px] overflow-clip pl-[24px] pr-[13.333px] py-[13.333px] top-[32px]" data-node-id="1:385" data-name="Navigation / Fixed" style="position:absolute;background-color:#fff;border-color:#e9e9e9;border-width:1.333px;border-style:solid;align-content:stretch;display:flex;gap:10.667px;height:80px;align-items:center;left:32px;overflow:hidden;padding-left:24px;padding-right:13.333px;padding-top:13.333px;padding-bottom:13.333px;top:32px">
+        <p class="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic relative shrink-0 text-[#161616] text-[26.667px] whitespace-nowrap" data-node-id="1:386" style="word-break:break-word;font-weight:700;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:26.667px;white-space:nowrap">
+          (Shuuu™)
+        </p>
+        <div class="bg-[#161616] h-[50.667px] relative shrink-0 w-[184px]" data-node-id="1:387" data-name="Nav item 0" style="background-color:#161616;height:50.667px;position:relative;flex-shrink:0;width:184px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[184px]" data-node-id="I1:387;227:501" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[16px] text-center text-white whitespace-nowrap" data-node-id="I1:387;227:501;514:10849" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;font-size:16px;text-align:center;color:#fff;white-space:nowrap'>
+              PROJECT
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[173.333px]" data-node-id="1:388" data-name="Nav item 1" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:173.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[173.333px]" data-node-id="I1:388;227:504" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:173.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:388;227:504;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              INFORMATION
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[184px]" data-node-id="1:389" data-name="Nav item 3" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:184px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[184px]" data-node-id="I1:389;1242:3" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:389;1242:3;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              SKILL
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[149.333px]" data-node-id="1:390" data-name="Nav item 2" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:149.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[149.333px]" data-node-id="I1:390;227:509" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:149.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:390;227:509;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              CONTACT ↗
+            </p>
+          </div>
+        </div>
+      </div>
+    </div><div class="bg-white relative size-full" data-node-id="1:391" data-name="09 / project-4" style="background-color:#fff;position:relative;width:100%;height:100%" data-panel="1:391">
+      <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[53.33px] not-italic text-[#999] text-[16px] top-[213.33px] whitespace-nowrap" data-node-id="1:392" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:53.33px;font-style:normal;color:#999;font-size:16px;top:213.33px;white-space:nowrap">
+        PROJECT / 02
+      </p>
+      <div class="absolute bg-white left-0 opacity-0 size-[1.333px] top-0" data-node-id="1:393" data-name="Top anchor" style="position:absolute;background-color:#fff;left:0;opacity:0;width:1.333px;height:1.333px;top:0"></div>
+      <div class="absolute bg-[#e9e9e9] h-[1.333px] left-[-663px] top-[-126px] w-[1813.333px]" data-node-id="1:394" data-name="Next divider" style="position:absolute;background-color:#e9e9e9;height:1.333px;left:-663px;top:-126px;width:1813.333px"></div>
+      <div class="absolute bg-white h-[133.333px] left-0 top-[2640px] w-[1.333px]" data-node-id="1:395" data-name="Bottom space" style="position:absolute;background-color:#fff;height:133.333px;left:0;top:2640px;width:1.333px"></div>
+      <div class="absolute contents left-[232px] top-[270px]" data-node-id="1:396" style="position:absolute;display:contents;left:232px;top:270px">
+        <div class="absolute content-stretch flex items-center justify-center left-[232px] p-[10px] top-[270px]" data-node-id="1:397" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:232px;padding:10px;top:270px">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[48px] text-black whitespace-nowrap" data-node-id="1:398" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;font-size:48px;color:#000;white-space:nowrap">
+            陶行知文创品牌形象设计
+          </p>
+        </div>
+        <div class="absolute content-stretch flex items-center justify-center left-[232px] p-[10px] top-[384px]" data-node-id="1:399" style="position:absolute;align-content:stretch;display:flex;align-items:center;justify-content:center;left:232px;padding:10px;top:384px">
+          <div class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[0] not-italic relative shrink-0 text-[#a7a7a7] text-[24px] whitespace-nowrap" data-node-id="1:400" style="word-break:break-word;font-weight:400;line-height:0;font-style:normal;position:relative;flex-shrink:0;color:#a7a7a7;font-size:24px;white-space:nowrap">
+            <p class="leading-[35px] mb-0" style="line-height:35px;margin-bottom:0">“行知”品牌形象设计以陶行知纪念馆及其教育理念为基础，通过前期对“生活即教育”“教学做合一”等思想的梳理，将“平等、真实、童真”的精神</p>
+            <p class="leading-[35px] mb-0" style="line-height:35px;margin-bottom:0">转化为像素化、手工感和多彩活泼的视觉语言，建立包含标志、标准色、辅助图形、IP形象与应用规范的完整品牌识别系统，并延展至文具、</p>
+            <p class="leading-[35px]" style="line-height:35px">徽章、书签、帆布袋、机构空间及宣传海报等场景，形成兼具教育意义、亲和力与传播性的品牌形象。</p>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[293px] left-[264px] overflow-clip top-[575px] w-[268px]" data-node-id="1:401" data-name="Detail 02 / Replace image" style="position:absolute;background-color:#d9d9d9;height:293px;left:264px;overflow:hidden;top:575px;width:268px">
+        <div class="absolute h-[274px] left-[37px] top-[9px] w-[194px]" data-node-id="1:402" data-name="品牌_画板 1 1" style="position:absolute;height:274px;left:37px;top:9px;width:194px">
+          <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/4fb38763-24bd-46db-af0a-95dcf4339aaf.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+        </div>
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[293px] left-[264px] overflow-clip top-[932px] w-[268px]" data-node-id="1:403" data-name="Detail 02 / Replace image" style="position:absolute;background-color:#d9d9d9;height:293px;left:264px;overflow:hidden;top:932px;width:268px">
+        <div class="absolute h-[274px] left-[37px] top-[9px] w-[194px]" data-node-id="1:404" data-name="品牌_画板 1 1" style="position:absolute;height:274px;left:37px;top:9px;width:194px">
+          <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/bd687bae-dc5e-42e3-aaae-acaab6886628.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+        </div>
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[293px] left-[637px] top-[575px] w-[268px]" data-node-id="1:405" data-name="Detail 02 / Replace image" style="position:absolute;background-color:#d9d9d9;height:293px;left:637px;top:575px;width:268px"></div>
+      <div class="absolute bg-[#d9d9d9] h-[293px] left-[637px] top-[932px] w-[268px]" data-node-id="1:406" data-name="Detail 02 / Replace image" style="position:absolute;background-color:#d9d9d9;height:293px;left:637px;top:932px;width:268px"></div>
+      <div class="absolute h-[274px] left-[673px] top-[584px] w-[194px]" data-node-id="1:407" data-name="品牌-02 1" style="position:absolute;height:274px;left:673px;top:584px;width:194px">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/483adbe8-f661-40bf-ba2f-ebe11cf8cb7c.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+      </div>
+      <div class="absolute h-[274px] left-[673px] top-[941px] w-[194px]" data-node-id="1:408" data-name="品牌-02 2" style="position:absolute;height:274px;left:673px;top:941px;width:194px">
+        <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/9427bd8f-8436-418b-8143-a6065a260378.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[293px] left-[1008px] overflow-clip top-[575px] w-[268px]" data-node-id="1:409" data-name="Detail 02 / Replace image" style="position:absolute;background-color:#d9d9d9;height:293px;left:1008px;overflow:hidden;top:575px;width:268px">
+        <div class="absolute h-[274px] left-[37px] top-[9px] w-[194px]" data-node-id="1:410" data-name="品牌-03 1" style="position:absolute;height:274px;left:37px;top:9px;width:194px">
+          <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/a38a1e05-6a2f-428a-b4c8-bd1a730fcea4.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+        </div>
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[293px] left-[1008px] overflow-clip top-[932px] w-[268px]" data-node-id="1:411" data-name="Detail 02 / Replace image" style="position:absolute;background-color:#d9d9d9;height:293px;left:1008px;overflow:hidden;top:932px;width:268px">
+        <div class="absolute h-[274px] left-[37px] top-[9px] w-[194px]" data-node-id="1:412" data-name="品牌-03 1" style="position:absolute;height:274px;left:37px;top:9px;width:194px">
+          <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/083e1205-3391-494b-83f3-6c5f1fd29641.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+        </div>
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[293px] left-[1380px] overflow-clip top-[575px] w-[268px]" data-node-id="1:413" data-name="Detail 02 / Replace image" style="position:absolute;background-color:#d9d9d9;height:293px;left:1380px;overflow:hidden;top:575px;width:268px">
+        <div class="absolute h-[274px] left-[37px] top-[9px] w-[194px]" data-node-id="1:414" data-name="品牌-04 1" style="position:absolute;height:274px;left:37px;top:9px;width:194px">
+          <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/dc904ee3-10c3-45b2-a4f0-8c7d9e601bbd.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+        </div>
+      </div>
+      <div class="absolute bg-[#d9d9d9] h-[293px] left-[1380px] overflow-clip top-[932px] w-[268px]" data-node-id="1:415" data-name="Detail 02 / Replace image" style="position:absolute;background-color:#d9d9d9;height:293px;left:1380px;overflow:hidden;top:932px;width:268px">
+        <div class="absolute h-[274px] left-[37px] top-[9px] w-[194px]" data-node-id="1:416" data-name="品牌-04 1" style="position:absolute;height:274px;left:37px;top:9px;width:194px">
+          <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/173bd0c7-6dd1-426f-8f5b-318cf54d5978.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%-676px)] top-[532px]" data-node-id="1:417" style="position:absolute;display:contents;left:calc(50% - 676px);top:532px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%-676px)] p-[10px] top-[532px] w-[40px]" data-node-id="1:418" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% - 676px);padding:10px;top:532px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:419" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            01
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%-676px)] top-[889px]" data-node-id="1:420" style="position:absolute;display:contents;left:calc(50% - 676px);top:889px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%-676px)] p-[10px] top-[889px] w-[40px]" data-node-id="1:421" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% - 676px);padding:10px;top:889px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:422" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            05
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%-303px)] top-[532px]" data-node-id="1:423" style="position:absolute;display:contents;left:calc(50% - 303px);top:532px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%-303px)] p-[10px] top-[532px] w-[40px]" data-node-id="1:424" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% - 303px);padding:10px;top:532px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:425" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            02
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%-303px)] top-[889px]" data-node-id="1:426" style="position:absolute;display:contents;left:calc(50% - 303px);top:889px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%-303px)] p-[10px] top-[889px] w-[40px]" data-node-id="1:427" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% - 303px);padding:10px;top:889px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:428" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            06
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%+441px)] top-[532px]" data-node-id="1:429" style="position:absolute;display:contents;left:calc(50% + 441px);top:532px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%+441px)] p-[10px] top-[532px] w-[40px]" data-node-id="1:430" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% + 441px);padding:10px;top:532px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:431" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            04
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%+441px)] top-[889px]" data-node-id="1:432" style="position:absolute;display:contents;left:calc(50% + 441px);top:889px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%+441px)] p-[10px] top-[889px] w-[40px]" data-node-id="1:433" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% + 441px);padding:10px;top:889px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:434" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            08
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%+70px)] top-[532px]" data-node-id="1:435" style="position:absolute;display:contents;left:calc(50% + 70px);top:532px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%+70px)] p-[10px] top-[532px] w-[40px]" data-node-id="1:436" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% + 70px);padding:10px;top:532px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:437" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            03
+          </p>
+        </div>
+      </div>
+      <div class="-translate-x-1/2 absolute contents left-[calc(50%+70px)] top-[889px]" data-node-id="1:438" style="position:absolute;display:contents;left:calc(50% + 70px);top:889px;transform:translateX(-50%)">
+        <div class="-translate-x-1/2 absolute content-stretch flex h-[36px] items-center justify-center left-[calc(50%+70px)] p-[10px] top-[889px] w-[40px]" data-node-id="1:439" style="position:absolute;align-content:stretch;display:flex;height:36px;align-items:center;justify-content:center;left:calc(50% + 70px);padding:10px;top:889px;width:40px;transform:translateX(-50%)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[#949292] text-[20px] whitespace-nowrap" data-node-id="1:440" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#949292;font-size:20px;white-space:nowrap">
+            07
+          </p>
+        </div>
+      </div>
+      <div class="absolute h-[53.333px] left-[1729px] overflow-clip top-[160px] w-[253.333px]" data-node-id="1:441" data-name="Project actions / Fixed" style="position:absolute;height:53.333px;left:1729px;overflow:hidden;top:160px;width:253.333px">
+        <div class="absolute bg-[#f3f3f3] h-[53.333px] left-0 overflow-clip top-0 w-[122.667px]" data-node-id="1:442" data-name="Index" style="position:absolute;background-color:#f3f3f3;height:53.333px;left:0;overflow:hidden;top:0;width:122.667px">
+          <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[29.67px] not-italic text-[#161616] text-[16px] top-[17.67px] whitespace-nowrap" data-node-id="1:443" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:29.67px;font-style:normal;color:#161616;font-size:16px;top:17.67px;white-space:nowrap">CLOSED </p>
+        </div>
+      </div>
+      <div class="absolute bg-white border-[#e9e9e9] border-[1.333px] border-solid content-stretch flex gap-[10.667px] h-[80px] items-center left-[32px] overflow-clip pl-[24px] pr-[13.333px] py-[13.333px] top-[32px]" data-node-id="1:444" data-name="Navigation / Fixed" style="position:absolute;background-color:#fff;border-color:#e9e9e9;border-width:1.333px;border-style:solid;align-content:stretch;display:flex;gap:10.667px;height:80px;align-items:center;left:32px;overflow:hidden;padding-left:24px;padding-right:13.333px;padding-top:13.333px;padding-bottom:13.333px;top:32px">
+        <p class="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic relative shrink-0 text-[#161616] text-[26.667px] whitespace-nowrap" data-node-id="1:445" style="word-break:break-word;font-weight:700;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:26.667px;white-space:nowrap">
+          (Shuuu™)
+        </p>
+        <div class="bg-[#161616] h-[50px] relative shrink-0 w-[174px]" data-node-id="1:446" data-name="Nav item 0" style="background-color:#161616;height:50px;position:relative;flex-shrink:0;width:174px">
+          <div class="absolute content-stretch flex gap-[10.667px] h-[50.667px] items-center justify-center left-0 p-[10.667px] top-0 w-[184px]" data-node-id="I1:446;227:501" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:10.667px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[18.67px] text-center text-white whitespace-nowrap" data-node-id="I1:446;227:501;514:10849" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;font-size:18.67px;text-align:center;color:#fff;white-space:nowrap'>
+              PROJECT
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[173.333px]" data-node-id="1:447" data-name="Nav item 1" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:173.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[173.333px]" data-node-id="I1:447;227:504" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:173.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:447;227:504;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              INFORMATION
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[184px]" data-node-id="1:448" data-name="Nav item 3" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:184px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[184px]" data-node-id="I1:448;1242:3" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:448;1242:3;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              SKILL
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[149.333px]" data-node-id="1:449" data-name="Nav item 2" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:149.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[149.333px]" data-node-id="I1:449;227:509" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:149.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:449;227:509;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              CONTACT ↗
+            </p>
+          </div>
+        </div>
+      </div>
+    </div><div class="bg-white relative size-full" data-node-id="1:450" data-name="STATE / work-open" style="background-color:#fff;position:relative;width:100%;height:100%" data-panel="1:450">
+      <div class="absolute flex h-[190.425px] items-center justify-center left-[576px] top-[398.31px] w-[239.72px]" data-node-id="1:451" style="position:absolute;display:flex;height:190.425px;align-items:center;justify-content:center;left:576px;top:398.31px;width:239.72px">
+        <div class="-rotate-12 flex-none" style="flex:none;transform:rotate(-12deg)">
+          <div class="bg-white border-[#eee] border-[1.333px] border-solid h-[149.333px] overflow-clip relative w-[213.333px]" data-name="Photo / 0" style="background-color:#fff;border-color:#eee;border-width:1.333px;border-style:solid;height:149.333px;overflow:hidden;position:relative;width:213.333px">
+            <div class="absolute h-[136px] left-[5.33px] top-[5.33px] w-[200px]" data-node-id="1:452" data-name="Replace with client image" style="position:absolute;height:136px;left:5.33px;top:5.33px;width:200px">
+              <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/8b473921-60ef-415c-a3e6-66ec1d8640c3.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute flex h-[160.294px] items-center justify-center left-[853.33px] top-[344.83px] w-[220.856px]" data-node-id="1:453" style="position:absolute;display:flex;height:160.294px;align-items:center;justify-content:center;left:853.33px;top:344.83px;width:220.856px">
+        <div class="-rotate-3 flex-none" style="flex:none;transform:rotate(-3deg)">
+          <div class="bg-white border-[#eee] border-[1.333px] border-solid h-[149.333px] overflow-clip relative w-[213.333px]" data-name="Photo / 1" style="background-color:#fff;border-color:#eee;border-width:1.333px;border-style:solid;height:149.333px;overflow:hidden;position:relative;width:213.333px">
+            <div class="absolute h-[136px] left-[5.33px] top-[5.33px] w-[200px]" data-node-id="1:454" data-name="Replace with client image" style="position:absolute;height:136px;left:5.33px;top:5.33px;width:200px">
+              <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/9d6efe55-f642-4af2-b32f-c5da18db5cf4.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute flex h-[187.296px] items-center justify-center left-[1102.17px] top-[438.67px] w-[237.908px]" data-node-id="1:455" style="position:absolute;display:flex;height:187.296px;align-items:center;justify-content:center;left:1102.17px;top:438.67px;width:237.908px">
+        <div class="flex-none rotate-11" style="flex:none;transform:rotate(11deg)">
+          <div class="bg-white border-[#eee] border-[1.333px] border-solid h-[149.333px] overflow-clip relative w-[213.333px]" data-name="Photo / 2" style="background-color:#fff;border-color:#eee;border-width:1.333px;border-style:solid;height:149.333px;overflow:hidden;position:relative;width:213.333px">
+            <div class="absolute h-[136px] left-[5.33px] top-[5.33px] w-[200px]" data-node-id="1:456" data-name="Replace with client image" style="position:absolute;height:136px;left:5.33px;top:5.33px;width:200px">
+              <img alt="" class="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src="assets/992b0797-5783-4e4e-afa2-55910352d168.webp" style="position:absolute;inset:0;max-width:none;object-fit:cover;pointer-events:none;width:100%;height:100%" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute h-[133.333px] left-[876px] top-[586.67px] w-[168px]" data-node-id="1:457" data-name="Folder / Toggle" style="position:absolute;height:133.333px;left:876px;top:586.67px;width:168px">
+        <div class="absolute bg-[#d9d9d9] h-[73.333px] left-[29.33px] rounded-[6.667px] top-[16px] w-[109.333px]" data-node-id="1:458" data-name="Folder back" style="position:absolute;background-color:#d9d9d9;height:73.333px;left:29.33px;border-radius:6.667px;top:16px;width:109.333px"></div>
+        <div class="absolute bg-[#d9d9d9] h-[18.667px] left-[29.33px] rounded-[5.333px] top-[6.67px] w-[45.333px]" data-node-id="1:459" data-name="Folder tab" style="position:absolute;background-color:#d9d9d9;height:18.667px;left:29.33px;border-radius:5.333px;top:6.67px;width:45.333px"></div>
+        <div class="absolute bg-[#eee] h-[44px] left-[26.67px] rounded-[5.333px] top-[48px] w-[114.667px]" data-node-id="1:460" data-name="Folder front" style="position:absolute;background-color:#eee;height:44px;left:26.67px;border-radius:5.333px;top:48px;width:114.667px"></div>
+        <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[53.33px] not-italic text-[#161616] text-[13.333px] top-[108px] whitespace-nowrap" data-node-id="1:461" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:53.33px;font-style:normal;color:#161616;font-size:13.333px;top:108px;white-space:nowrap">
+          PROJECT
+        </p>
+      </div>
+      <p class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal leading-[normal] left-[calc(50%-148px)] not-italic text-[#999] text-[16px] top-[944px] whitespace-nowrap" data-node-id="1:462" style="word-break:break-word;position:absolute;font-weight:400;line-height:normal;left:calc(50% - 148px);font-style:normal;color:#999;font-size:16px;top:944px;white-space:nowrap">
+        SELECT A PROJECT / 点击照片进入项目
+      </p>
+      <div class="absolute bg-[#e9e9e9] h-[1.333px] left-[213.33px] top-[1053.33px] w-[1493.333px]" data-node-id="1:463" data-name="Divider / 0" style="position:absolute;background-color:#e9e9e9;height:1.333px;left:213.33px;top:1053.33px;width:1493.333px"></div>
+      <div class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal h-[82.667px] leading-[normal] left-[213.33px] not-italic overflow-clip top-[1054.67px] w-[1493.333px] whitespace-nowrap" data-node-id="1:464" data-name="Work row / 0" style="word-break:break-word;position:absolute;font-weight:400;height:82.667px;line-height:normal;left:213.33px;font-style:normal;overflow:hidden;top:1054.67px;width:1493.333px;white-space:nowrap">
+        <p class="absolute left-0 text-[#999] text-[16px] top-[29.33px]" data-node-id="1:465" style="position:absolute;left:0;color:#999;font-size:16px;top:29.33px">
+          01
+        </p>
+        <p class="absolute left-[93.33px] text-[#161616] text-[21.333px] top-[26.67px]" data-node-id="1:466" style="position:absolute;left:93.33px;color:#161616;font-size:21.333px;top:26.67px">
+          余境 · 毕业展视觉设计
+        </p>
+        <p class="absolute left-[946.67px] text-[#999] text-[16px] top-[29.33px]" data-node-id="1:467" style="position:absolute;left:946.67px;color:#999;font-size:16px;top:29.33px">
+          Visual identity
+        </p>
+        <p class="absolute left-[1333.33px] text-[#999] text-[16px] top-[29.33px]" data-node-id="1:468" style="position:absolute;left:1333.33px;color:#999;font-size:16px;top:29.33px">
+          2025
+        </p>
+        <p class="absolute left-[1453.33px] text-[#161616] text-[21.333px] top-[26.67px]" data-node-id="1:469" style="position:absolute;left:1453.33px;color:#161616;font-size:21.333px;top:26.67px">
+          ↗
+        </p>
+      </div>
+      <div class="absolute bg-[#e9e9e9] h-[1.333px] left-[213.33px] top-[1138.67px] w-[1493.333px]" data-node-id="1:470" data-name="Divider / 1" style="position:absolute;background-color:#e9e9e9;height:1.333px;left:213.33px;top:1138.67px;width:1493.333px"></div>
+      <div class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal h-[82.667px] leading-[normal] left-[213.33px] not-italic overflow-clip top-[1140px] w-[1493.333px] whitespace-nowrap" data-node-id="1:471" data-name="Work row / 1" style="word-break:break-word;position:absolute;font-weight:400;height:82.667px;line-height:normal;left:213.33px;font-style:normal;overflow:hidden;top:1140px;width:1493.333px;white-space:nowrap">
+        <p class="absolute left-0 text-[#999] text-[16px] top-[29.33px]" data-node-id="1:472" style="position:absolute;left:0;color:#999;font-size:16px;top:29.33px">
+          02
+        </p>
+        <p class="absolute left-[93.33px] text-[#161616] text-[21.333px] top-[26.67px]" data-node-id="1:473" style="position:absolute;left:93.33px;color:#161616;font-size:21.333px;top:26.67px">
+          日常器物 · 包装与品牌
+        </p>
+        <p class="absolute left-[946.67px] text-[#999] text-[16px] top-[29.33px]" data-node-id="1:474" style="position:absolute;left:946.67px;color:#999;font-size:16px;top:29.33px">Brand &amp; packaging</p>
+        <p class="absolute left-[1333.33px] text-[#999] text-[16px] top-[29.33px]" data-node-id="1:475" style="position:absolute;left:1333.33px;color:#999;font-size:16px;top:29.33px">
+          2025
+        </p>
+        <p class="absolute left-[1453.33px] text-[#161616] text-[21.333px] top-[26.67px]" data-node-id="1:476" style="position:absolute;left:1453.33px;color:#161616;font-size:21.333px;top:26.67px">
+          ↗
+        </p>
+      </div>
+      <div class="absolute bg-[#e9e9e9] h-[1.333px] left-[213.33px] top-[1224px] w-[1493.333px]" data-node-id="1:477" data-name="Divider / 2" style="position:absolute;background-color:#e9e9e9;height:1.333px;left:213.33px;top:1224px;width:1493.333px"></div>
+      <div class="absolute bg-[#e9e9e9] h-[1.333px] left-[213.33px] top-[1309.33px] w-[1493.333px]" data-node-id="1:478" data-name="Divider / 3" style="position:absolute;background-color:#e9e9e9;height:1.333px;left:213.33px;top:1309.33px;width:1493.333px"></div>
+      <div class="[word-break:break-word] absolute font-['Inter:Regular'] font-normal h-[82.667px] leading-[normal] left-[213px] not-italic overflow-clip top-[1225px] w-[1493.333px] whitespace-nowrap" data-node-id="1:479" data-name="Work row / 4" style="word-break:break-word;position:absolute;font-weight:400;height:82.667px;line-height:normal;left:213px;font-style:normal;overflow:hidden;top:1225px;width:1493.333px;white-space:nowrap">
+        <p class="absolute left-0 text-[#999] text-[16px] top-[29.33px]" data-node-id="1:480" style="position:absolute;left:0;color:#999;font-size:16px;top:29.33px">
+          03
+        </p>
+        <p class="absolute left-[946.67px] text-[#999] text-[16px] top-[29.33px]" data-node-id="1:481" style="position:absolute;left:946.67px;color:#999;font-size:16px;top:29.33px">Book &amp; editorial</p>
+        <p class="absolute left-[1333.33px] text-[#999] text-[16px] top-[29.33px]" data-node-id="1:482" style="position:absolute;left:1333.33px;color:#999;font-size:16px;top:29.33px">
+          2024
+        </p>
+        <p class="absolute left-[1453.33px] text-[#161616] text-[21.333px] top-[26.67px]" data-node-id="1:483" style="position:absolute;left:1453.33px;color:#161616;font-size:21.333px;top:26.67px">
+          ↗
+        </p>
+        <p class="absolute left-[85px] text-[#161616] text-[21.333px] top-[23px]" data-node-id="1:484" style="position:absolute;left:85px;color:#161616;font-size:21.333px;top:23px">
+          三星堆博物馆网页设计
+        </p>
+      </div>
+      <div class="absolute bg-white h-[106.667px] left-0 top-[1546.67px] w-[1.333px]" data-node-id="1:485" data-name="Bottom breathing room" style="position:absolute;background-color:#fff;height:106.667px;left:0;top:1546.67px;width:1.333px"></div>
+      <div class="absolute bg-white border-[#e9e9e9] border-[1.333px] border-solid content-stretch flex gap-[10.667px] h-[80px] items-center left-[32px] overflow-clip pl-[24px] pr-[13.333px] py-[13.333px] top-[32px]" data-node-id="1:486" data-name="Navigation / Fixed" style="position:absolute;background-color:#fff;border-color:#e9e9e9;border-width:1.333px;border-style:solid;align-content:stretch;display:flex;gap:10.667px;height:80px;align-items:center;left:32px;overflow:hidden;padding-left:24px;padding-right:13.333px;padding-top:13.333px;padding-bottom:13.333px;top:32px">
+        <p class="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic relative shrink-0 text-[#161616] text-[26.667px] whitespace-nowrap" data-node-id="1:487" style="word-break:break-word;font-weight:700;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:26.667px;white-space:nowrap">
+          (Shuuu™)
+        </p>
+        <div class="bg-[#161616] h-[50.667px] relative shrink-0 w-[184px]" data-node-id="1:488" data-name="Nav item 0" style="background-color:#161616;height:50.667px;position:relative;flex-shrink:0;width:184px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[184px]" data-node-id="I1:488;227:501" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[16px] text-center text-white whitespace-nowrap" data-node-id="I1:488;227:501;514:10849" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;font-size:16px;text-align:center;color:#fff;white-space:nowrap'>
+              PROJECT
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[173.333px]" data-node-id="1:489" data-name="Nav item 1" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:173.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[173.333px]" data-node-id="I1:489;227:504" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:173.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:489;227:504;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              INFORMATION
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[184px]" data-node-id="1:490" data-name="Nav item 3" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:184px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[184px]" data-node-id="I1:490;1242:3" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:490;1242:3;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              SKILL
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[149.333px]" data-node-id="1:491" data-name="Nav item 2" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:149.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[149.333px]" data-node-id="I1:491;227:509" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:149.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:491;227:509;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              CONTACT ↗
+            </p>
+          </div>
+        </div>
+      </div>
+    </div><div class="bg-white relative size-full" data-node-id="1:492" data-name="Desktop -Skills页" style="background-color:#fff;position:relative;width:100%;height:100%" data-panel="1:492">
+      <div class="absolute bg-black h-[30px] left-[282px] top-[-126px] w-[55px]" data-node-id="1:493" style="position:absolute;background-color:#000;height:30px;left:282px;top:-126px;width:55px"></div>
+      <div class="absolute bg-[#f3f3f3] h-[30px] left-[434px] top-[-126px] w-[80px]" data-node-id="1:494" style="position:absolute;background-color:#f3f3f3;height:30px;left:434px;top:-126px;width:80px"></div>
+      <div class="absolute border border-[#eee] border-solid h-[58px] left-[28px] top-[-141px] w-[496px]" data-node-id="1:495" style="position:absolute;border-width:1px;border-color:#eee;border-style:solid;height:58px;left:28px;top:-141px;width:496px"></div>
+      <div class="absolute bg-[#f3f3f3] h-[30px] left-[346px] top-[-126px] w-[77px]" data-node-id="1:496" style="position:absolute;background-color:#f3f3f3;height:30px;left:346px;top:-126px;width:77px"></div>
+      <div class="absolute bg-[#f3f3f3] h-[30px] left-[160px] top-[-126px] w-[110px]" data-node-id="1:497" style="position:absolute;background-color:#f3f3f3;height:30px;left:160px;top:-126px;width:110px"></div>
+      <div class="-translate-x-1/2 -translate-y-1/2 [word-break:break-word] absolute flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] left-[214.5px] not-italic text-[14px] text-black text-center top-[-111.5px] w-[123px]" data-node-id="1:498" style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-weight:500;justify-content:center;line-height:0;left:214.5px;font-style:normal;font-size:14px;color:#000;text-align:center;top:-111.5px;width:123px;transform:translateX(-50%) translateY(-50%)">
+        <p class="leading-[normal]" style="line-height:normal">INFORMATION</p>
+      </div>
+      <div class="-translate-x-1/2 -translate-y-1/2 [word-break:break-word] absolute flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] left-[385.5px] not-italic text-[14px] text-black text-center top-[-111.5px] whitespace-nowrap" data-node-id="1:499" style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-weight:500;justify-content:center;line-height:0;left:385.5px;font-style:normal;font-size:14px;color:#000;text-align:center;top:-111.5px;white-space:nowrap;transform:translateX(-50%) translateY(-50%)">
+        <p class="leading-[normal]" style="line-height:normal">PROJECT</p>
+      </div>
+      <div class="-translate-x-1/2 -translate-y-1/2 [word-break:break-word] absolute flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] left-[309.5px] not-italic text-[14px] text-black text-center top-[-111.5px] whitespace-nowrap" data-node-id="1:500" style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-weight:500;justify-content:center;line-height:0;left:309.5px;font-style:normal;font-size:14px;color:#000;text-align:center;top:-111.5px;white-space:nowrap;transform:translateX(-50%) translateY(-50%)">
+        <p class="leading-[normal]" style="line-height:normal">SKILLS</p>
+      </div>
+      <div class="-translate-x-1/2 -translate-y-1/2 [word-break:break-word] absolute flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] left-[309.5px] not-italic text-[14px] text-center text-white top-[-111.5px] whitespace-nowrap" data-node-id="1:501" style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-weight:500;justify-content:center;line-height:0;left:309.5px;font-style:normal;font-size:14px;text-align:center;color:#fff;top:-111.5px;white-space:nowrap;transform:translateX(-50%) translateY(-50%)">
+        <p class="leading-[normal]" style="line-height:normal">SKILLS</p>
+      </div>
+      <div class="-translate-x-1/2 -translate-y-1/2 [word-break:break-word] absolute flex flex-col font-['Inter:Medium'] font-medium justify-center leading-[0] left-[474.5px] not-italic text-[14px] text-black text-center top-[-111.5px] w-[69px]" data-node-id="1:502" style="word-break:break-word;position:absolute;display:flex;flex-direction:column;font-weight:500;justify-content:center;line-height:0;left:474.5px;font-style:normal;font-size:14px;color:#000;text-align:center;top:-111.5px;width:69px;transform:translateX(-50%) translateY(-50%)">
+        <p class="leading-[normal]" style="line-height:normal">CONTACT</p>
+      </div>
+      <div class="[word-break:break-word] absolute contents font-['Inter:Bold'] font-bold leading-[0] left-[43px] not-italic text-black text-center top-[-126px] whitespace-nowrap" data-node-id="1:503" style="word-break:break-word;position:absolute;display:contents;font-weight:700;line-height:0;left:43px;font-style:normal;color:#000;text-align:center;top:-126px;white-space:nowrap">
+        <div class="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col justify-center left-[94px] text-[0px] top-[-112px]" data-node-id="1:504" style="position:absolute;display:flex;flex-direction:column;justify-content:center;left:94px;font-size:0px;top:-112px;transform:translateX(-50%) translateY(-50%)">
+          <p class="text-[20px] whitespace-pre" style="font-size:20px;white-space:pre">
+            <span class="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic" style="word-break:break-word;font-weight:500;line-height:normal;font-style:normal">(</span>
+            <span class="leading-[normal]" style="line-height:normal">Shuuu     </span>
+            <span class="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic" style="word-break:break-word;font-weight:500;line-height:normal;font-style:normal">)</span>
+          </p>
+        </div>
+        <div class="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col justify-center left-[124.5px] text-[14px] top-[-117.5px]" data-node-id="1:505" style="position:absolute;display:flex;flex-direction:column;justify-content:center;left:124.5px;font-size:14px;top:-117.5px;transform:translateX(-50%) translateY(-50%)">
+          <p class="leading-[normal]" style="line-height:normal">TM</p>
+        </div>
+      </div>
+      <div class="absolute flex h-[404.047px] items-center justify-center left-[948.61px] top-[321.07px] w-[358.363px]" data-node-id="1:506" style="position:absolute;display:flex;height:404.047px;align-items:center;justify-content:center;left:948.61px;top:321.07px;width:358.363px">
+        <div class="flex-none rotate-[-4.08deg]" style="flex:none;transform:rotate(-4.08deg)">
+          <div class="bg-[#f3f3f3] h-[381.377px] relative w-[332.057px]" style="background-color:#f3f3f3;height:381.377px;position:relative;width:332.057px"></div>
+        </div>
+      </div>
+      <div class="absolute flex h-[415.034px] items-center justify-center left-[1268.67px] top-[371.41px] w-[371.333px]" data-node-id="1:507" style="position:absolute;display:flex;height:415.034px;align-items:center;justify-content:center;left:1268.67px;top:371.41px;width:371.333px">
+        <div class="flex-none rotate-[6.2deg]" style="flex:none;transform:rotate(6.2deg)">
+          <div class="bg-[#d9d9d9] h-[381.377px] relative w-[332.057px]" style="background-color:#d9d9d9;height:381.377px;position:relative;width:332.057px"></div>
+        </div>
+      </div>
+      <div class="absolute contents left-[310.1px] top-[334.87px]" data-node-id="1:508" style="position:absolute;display:contents;left:310.1px;top:334.87px">
+        <div class="absolute flex h-[404.047px] items-center justify-center left-[310.1px] top-[345.81px] w-[358.363px]" data-node-id="1:509" style="position:absolute;display:flex;height:404.047px;align-items:center;justify-content:center;left:310.1px;top:345.81px;width:358.363px">
+          <div class="flex-none rotate-[-4.08deg]" style="flex:none;transform:rotate(-4.08deg)">
+            <div class="bg-[#f3f3f3] h-[381.377px] relative w-[332.057px]" style="background-color:#f3f3f3;height:381.377px;position:relative;width:332.057px"></div>
+          </div>
+        </div>
+        <div class="absolute flex h-[53.918px] items-center justify-center left-[394.71px] top-[334.87px] w-[159.075px]" data-node-id="1:510" style="position:absolute;display:flex;height:53.918px;align-items:center;justify-content:center;left:394.71px;top:334.87px;width:159.075px">
+          <div class="flex-none rotate-[-4.14deg]" style="flex:none;transform:rotate(-4.14deg)">
+            <div class="bg-[#d7d7d7] h-[42.743px] relative w-[156.398px]" style="background-color:#d7d7d7;height:42.743px;position:relative;width:156.398px"></div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute flex h-[53.918px] items-center justify-center left-[1033.22px] top-[310.13px] w-[159.075px]" data-node-id="1:511" style="position:absolute;display:flex;height:53.918px;align-items:center;justify-content:center;left:1033.22px;top:310.13px;width:159.075px">
+        <div class="flex-none rotate-[-4.14deg]" style="flex:none;transform:rotate(-4.14deg)">
+          <div class="bg-[#d7d7d7] h-[42.743px] relative w-[156.398px]" style="background-color:#d7d7d7;height:42.743px;position:relative;width:156.398px"></div>
+        </div>
+      </div>
+      <div class="absolute contents left-[-2339px] top-[-1318px]" data-node-id="1:512" style="position:absolute;display:contents;left:-2339px;top:-1318px">
+        <div class="absolute flex h-[415.034px] items-center justify-center left-[630.16px] top-[396.15px] w-[371.333px]" data-node-id="1:513" style="position:absolute;display:flex;height:415.034px;align-items:center;justify-content:center;left:630.16px;top:396.15px;width:371.333px">
+          <div class="flex-none rotate-[6.2deg]" style="flex:none;transform:rotate(6.2deg)">
+            <div class="bg-[#d9d9d9] h-[381.377px] relative w-[332.057px]" style="background-color:#d9d9d9;height:381.377px;position:relative;width:332.057px"></div>
+          </div>
+        </div>
+        <div class="absolute flex h-[59.25px] items-center justify-center left-[757.55px] top-[387.06px] w-[160.08px]" data-node-id="1:514" style="position:absolute;display:flex;height:59.25px;align-items:center;justify-content:center;left:757.55px;top:387.06px;width:160.08px">
+          <div class="flex-none rotate-[6.15deg]" style="flex:none;transform:rotate(6.15deg)">
+            <div class="bg-[#f3f3f3] h-[42.743px] relative w-[156.401px]" style="background-color:#f3f3f3;height:42.743px;position:relative;width:156.401px"></div>
+          </div>
+        </div>
+        <div class="absolute left-[-2339px] size-[3979px] top-[-1318px]" data-node-id="1:515" data-name="辅助图形填色版-1 1" style="position:absolute;left:-2339px;width:3979px;height:3979px;top:-1318px"></div>
+      </div>
+      <div class="absolute flex h-[59.25px] items-center justify-center left-[1392.71px] top-[363.6px] w-[160.077px]" data-node-id="1:516" style="position:absolute;display:flex;height:59.25px;align-items:center;justify-content:center;left:1392.71px;top:363.6px;width:160.077px">
+        <div class="flex-none rotate-[6.15deg]" style="flex:none;transform:rotate(6.15deg)">
+          <div class="bg-[#f3f3f3] h-[42.743px] relative w-[156.398px]" style="background-color:#f3f3f3;height:42.743px;position:relative;width:156.398px"></div>
+        </div>
+      </div>
+      <div class="absolute content-stretch flex h-[73px] items-center justify-center left-[413px] p-[10px] top-[512px] w-[162px]" data-node-id="1:517" style="position:absolute;align-content:stretch;display:flex;height:73px;align-items:center;justify-content:center;left:413px;padding:10px;top:512px;width:162px">
+        <div class="flex h-[55.068px] items-center justify-center relative shrink-0 w-[146.986px]" data-node-id="1:518" style="display:flex;height:55.068px;align-items:center;justify-content:center;position:relative;flex-shrink:0;width:146.986px">
+          <div class="flex-none rotate-[-4.46deg]" style="flex:none;transform:rotate(-4.46deg)">
+            <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative text-[36px] text-black whitespace-nowrap" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;font-size:36px;color:#000;white-space:nowrap">创意工具</p>
+          </div>
+        </div>
+      </div>
+      <div class="absolute content-stretch flex h-[77px] items-center justify-center left-[1373px] p-[10px] top-[551px] w-[163px]" data-node-id="1:519" style="position:absolute;align-content:stretch;display:flex;height:77px;align-items:center;justify-content:center;left:1373px;padding:10px;top:551px;width:163px">
+        <div class="flex h-[59.319px] items-center justify-center relative shrink-0 w-[147.915px]" data-node-id="1:520" style="display:flex;height:59.319px;align-items:center;justify-content:center;position:relative;flex-shrink:0;width:147.915px">
+          <div class="flex-none rotate-[6.21deg]" style="flex:none;transform:rotate(6.21deg)">
+            <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative text-[36px] text-black whitespace-nowrap" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;font-size:36px;color:#000;white-space:nowrap">综合素养</p>
+          </div>
+        </div>
+      </div>
+      <div class="absolute content-stretch flex h-[78px] items-center justify-center left-[1017px] p-[10px] top-[489px] w-[232px]" data-node-id="1:521" style="position:absolute;align-content:stretch;display:flex;height:78px;align-items:center;justify-content:center;left:1017px;padding:10px;top:489px;width:232px">
+        <div class="flex h-[60.664px] items-center justify-center relative shrink-0 w-[218.767px]" data-node-id="1:522" style="display:flex;height:60.664px;align-items:center;justify-content:center;position:relative;flex-shrink:0;width:218.767px">
+          <div class="flex-none rotate-[-4.46deg]" style="flex:none;transform:rotate(-4.46deg)">
+            <p class="[word-break:break-word] font-['Inter:Light'] font-light leading-[normal] not-italic relative text-[36px] text-black whitespace-nowrap" style="word-break:break-word;font-weight:300;line-height:normal;font-style:normal;position:relative;font-size:36px;color:#000;white-space:nowrap">落地执行能力</p>
+          </div>
+        </div>
+      </div>
+      <div class="absolute flex h-[67.704px] items-center justify-center left-[697.71px] top-[583.1px] w-[236.399px]" data-node-id="1:523" style="position:absolute;display:flex;height:67.704px;align-items:center;justify-content:center;left:697.71px;top:583.1px;width:236.399px">
+        <div class="flex-none rotate-[6.21deg]" style="flex:none;transform:rotate(6.21deg)">
+          <p class="[word-break:break-word] font-['Inter:Light'] font-light h-[42.743px] leading-[normal] not-italic relative text-[36px] text-black w-[233.145px]" style="word-break:break-word;font-weight:300;height:42.743px;line-height:normal;font-style:normal;position:relative;font-size:36px;color:#000;width:233.145px">AIGC 协同创作</p>
+        </div>
+      </div>
+      <div class="absolute content-stretch flex h-[45px] items-center justify-center left-[407px] p-[10px] top-[484px] w-[140px]" data-node-id="1:524" style="position:absolute;align-content:stretch;display:flex;height:45px;align-items:center;justify-content:center;left:407px;padding:10px;top:484px;width:140px">
+        <div class="flex h-[26.513px] items-center justify-center relative shrink-0 w-[123.95px]" data-node-id="1:525" style="display:flex;height:26.513px;align-items:center;justify-content:center;position:relative;flex-shrink:0;width:123.95px">
+          <div class="flex-none rotate-[-4.46deg]" style="flex:none;transform:rotate(-4.46deg)">
+            <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative text-[#a7a7a7] text-[14px] whitespace-nowrap" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;color:#a7a7a7;font-size:14px;white-space:nowrap">01 / Creative Tools</p>
+          </div>
+        </div>
+      </div>
+      <div class="absolute flex h-[37.159px] items-center justify-center left-[702.56px] top-[549.1px] w-[174.863px]" data-node-id="1:526" style="position:absolute;display:flex;height:37.159px;align-items:center;justify-content:center;left:702.56px;top:549.1px;width:174.863px">
+        <div class="flex-none rotate-[6.21deg]" style="flex:none;transform:rotate(6.21deg)">
+          <p class="[word-break:break-word] font-['Inter:Regular'] font-normal h-[18.457px] leading-[normal] not-italic relative text-[#a7a7a7] text-[16px] w-[173.887px]" style="word-break:break-word;font-weight:400;height:18.457px;line-height:normal;font-style:normal;position:relative;color:#a7a7a7;font-size:16px;width:173.887px">02 / AIGC Collaboration</p>
+        </div>
+      </div>
+      <div class="absolute content-stretch flex h-[53px] items-center justify-center left-[1375px] p-[10px] top-[523px] w-[161px]" data-node-id="1:527" style="position:absolute;align-content:stretch;display:flex;height:53px;align-items:center;justify-content:center;left:1375px;padding:10px;top:523px;width:161px">
+        <div class="flex h-[34.574px] items-center justify-center relative shrink-0 w-[146.204px]" data-node-id="1:528" style="display:flex;height:34.574px;align-items:center;justify-content:center;position:relative;flex-shrink:0;width:146.204px">
+          <div class="flex-none rotate-[6.21deg]" style="flex:none;transform:rotate(6.21deg)">
+            <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative text-[#a7a7a7] text-[16px] whitespace-nowrap" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;color:#a7a7a7;font-size:16px;white-space:nowrap">04 / General Ability</p>
+          </div>
+        </div>
+      </div>
+      <div class="absolute content-stretch flex h-[54px] items-center justify-center left-[1007px] p-[10px] top-[461px] w-[229px]" data-node-id="1:529" style="position:absolute;align-content:stretch;display:flex;height:54px;align-items:center;justify-content:center;left:1007px;padding:10px;top:461px;width:229px">
+        <div class="flex h-[35.662px] items-center justify-center relative shrink-0 w-[215.826px]" data-node-id="1:530" style="display:flex;height:35.662px;align-items:center;justify-content:center;position:relative;flex-shrink:0;width:215.826px">
+          <div class="flex-none rotate-[-4.46deg]" style="flex:none;transform:rotate(-4.46deg)">
+            <p class="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative text-[#a7a7a7] text-[16px] whitespace-nowrap" style="word-break:break-word;font-weight:400;line-height:normal;font-style:normal;position:relative;color:#a7a7a7;font-size:16px;white-space:nowrap">03 / Operational Capabilities</p>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bg-white border-[#e9e9e9] border-[1.333px] border-solid content-stretch flex gap-[10.667px] h-[80px] items-center left-[32px] overflow-clip pl-[24px] pr-[13.333px] py-[13.333px] top-[32px]" data-node-id="1:531" data-name="Navigation / Fixed" style="position:absolute;background-color:#fff;border-color:#e9e9e9;border-width:1.333px;border-style:solid;align-content:stretch;display:flex;gap:10.667px;height:80px;align-items:center;left:32px;overflow:hidden;padding-left:24px;padding-right:13.333px;padding-top:13.333px;padding-bottom:13.333px;top:32px">
+        <p class="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[normal] not-italic relative shrink-0 text-[#161616] text-[26.667px] whitespace-nowrap" data-node-id="1:532" style="word-break:break-word;font-weight:700;line-height:normal;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:26.667px;white-space:nowrap">
+          (Shuuu™)
+        </p>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[184px]" data-node-id="1:533" data-name="Nav item 0" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:184px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[184px]" data-node-id="I1:533;227:499" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:533;227:499;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              PROJECT
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[173.333px]" data-node-id="1:534" data-name="Nav item 1" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:173.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[173.333px]" data-node-id="I1:534;227:504" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:173.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:534;227:504;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              INFORMATION
+            </p>
+          </div>
+        </div>
+        <div class="bg-black h-[50.667px] relative shrink-0 w-[184px]" data-node-id="1:535" data-name="Nav item 3" style="background-color:#000;height:50.667px;position:relative;flex-shrink:0;width:184px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[184px]" data-node-id="I1:535;1242:3" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:184px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[16px] text-center text-white whitespace-nowrap" data-node-id="I1:535;1242:3;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;font-size:16px;text-align:center;color:#fff;white-space:nowrap'>
+              SKILL
+            </p>
+          </div>
+        </div>
+        <div class="bg-[#f3f3f3] h-[50.667px] relative shrink-0 w-[149.333px]" data-node-id="1:536" data-name="Nav item 2" style="background-color:#f3f3f3;height:50.667px;position:relative;flex-shrink:0;width:149.333px">
+          <div class="absolute content-stretch flex gap-[var(--sds-size-space-150,8px)] h-[50.667px] items-center justify-center left-0 p-[var(--sds-size-space-200,10.667px)] top-0 w-[149.333px]" data-node-id="I1:536;227:509" data-name="Navigation Button" style="position:absolute;align-content:stretch;display:flex;gap:8px;height:50.667px;align-items:center;justify-content:center;left:0;padding:10.667px;top:0;width:149.333px">
+            <p class="[word-break:break-word] font-[family-name:var(--sds-typography-body-font-family,'Inter:Semi_Bold')] font-[var(--sds-typography-body-font-weight-strong,600)] leading-none not-italic relative shrink-0 text-[#161616] text-[16px] text-center whitespace-nowrap" data-node-id="I1:536;227:509;515:5546" style='word-break:break-word;font-family:Inter,Arial,"Noto Sans CJK SC",sans-serif;font-weight:600;line-height:1;font-style:normal;position:relative;flex-shrink:0;color:#161616;font-size:16px;text-align:center;white-space:nowrap'>
+              CONTACT ↗
+            </p>
+          </div>
+        </div>
+      </div>
+    </div></div></main><script>
+const stage=document.querySelector('#stage'),viewport=document.querySelector('#viewport');let current='1:103';const heights={'1:103':1080,'1:111':1654,'1:450':1654,'1:172':1080,'1:228':1080,'1:245':1600,'1:331':1400,'1:391':1400,'1:492':1080};function resize(){const scale=window.innerWidth/1920;stage.style.transform=`scale(${scale})`;viewport.style.height=(heights[current]||1080)*scale+'px'}function show(id,replace=false){current=id;document.querySelectorAll('[data-panel]').forEach(el=>el.classList.toggle('active',el.dataset.panel===id));resize();window.scrollTo(0,0);if(!replace)history.pushState({id},'',`#${id.replace(':','-')}`)}window.onresize=resize;window.addEventListener('scroll',()=>{const el=document.querySelector('.active [data-name="Navigation / Fixed"]');if(el)el.style.top=(32+window.scrollY/(window.innerWidth/1920))+'px'},{passive:true});window.onpopstate=e=>show(e.state?.id||'1:103',true);
+for(const panel of document.querySelectorAll('[data-panel]')){const nav=panel.querySelector('[data-name="Navigation / Fixed"]');if(nav){const brand=nav.querySelector('p');if(brand){brand.onclick=()=>show('1:103');brand.tabIndex=0}nav.querySelectorAll('[data-name^="Nav item"]').forEach((el,i)=>{el.tabIndex=0;el.onclick=()=>show(['1:111','1:172','1:492','1:228'][i]);el.onkeydown=e=>{if(e.key==='Enter')el.click()}})}const folder=panel.querySelector('[data-name="Folder / Toggle"]');if(folder&&panel.dataset.panel!=='1:111'){folder.tabIndex=0;folder.onclick=()=>show(current==='1:450'?'1:111':'1:450');folder.onkeydown=e=>{if(e.key==='Enter')folder.click()}}panel.querySelectorAll('[data-name^="Work row"]').forEach((el,i)=>{el.tabIndex=0;el.onclick=()=>show(['1:245','1:391','1:331'][i]);el.onkeydown=e=>{if(e.key==='Enter')el.click()}});const action=panel.querySelector('[data-name="Project actions / Fixed"]');if(action){action.tabIndex=0;action.onclick=()=>show('1:111')}}const opened=document.querySelector('[data-panel="1:450"]');['1:451','1:453','1:455'].forEach((id,i)=>{const el=opened.querySelector(`[data-node-id="${id}"]`);if(el){el.dataset.photo='';el.tabIndex=0;el.onclick=()=>show(['1:245','1:391','1:331'][i]);el.onkeydown=e=>{if(e.key==='Enter')el.click()}}});
+// Keep the folder and its project previews in one hover region so the pointer can move between them.
+const work=document.querySelector('[data-panel="1:111"]');
+const folder=work.querySelector('[data-name="Folder / Toggle"]');
+const zone=document.createElement('div');zone.className='project-hover-zone';
+folder.before(zone);zone.append(folder);folder.classList.add('hover-folder');
+folder.style.left=(876-550)+'px';folder.style.top=(586.67-320)+'px';
+folder.tabIndex=0;folder.setAttribute('role','button');folder.setAttribute('aria-label','展开项目');folder.setAttribute('aria-expanded','false');
+const from=[[264,157],[-4,226],[-260,119]];
+['1:451','1:453','1:455'].forEach((id,i)=>{
+  const photo=opened.querySelector(`[data-node-id="${id}"]`).cloneNode(true);
+  photo.classList.add('hover-photo');photo.dataset.photo='';photo.style.left=(parseFloat(photo.style.left)-550)+'px';photo.style.top=(parseFloat(photo.style.top)-320)+'px';
+  photo.style.setProperty('--from-x',from[i][0]+'px');photo.style.setProperty('--from-y',from[i][1]+'px');
+  photo.tabIndex=0;photo.setAttribute('role','button');photo.setAttribute('aria-label',['打开毕业展全案设计','打开陶行知文创品牌形象设计','打开三星堆网页设计'][i]);
+  photo.onclick=()=>show(['1:245','1:391','1:331'][i]);photo.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();photo.click()}};zone.append(photo);
+});
+const hint=work.querySelector('[data-node-id="1:141"]');if(hint)hint.textContent='HOVER TO OPEN / 悬浮文件夹展开作品';
+function setFolderOpen(open){zone.classList.toggle('is-open',open);folder.setAttribute('aria-expanded',String(open));}
+folder.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'||e.pointerType==='pen')setFolderOpen(true)});
+zone.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'||e.pointerType==='pen')setFolderOpen(false)});
+folder.addEventListener('click',()=>{if(!matchMedia('(hover: hover)').matches)setFolderOpen(!zone.classList.contains('is-open'))});
+folder.addEventListener('focus',()=>setFolderOpen(true));
+folder.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();setFolderOpen(!zone.classList.contains('is-open'))}if(e.key==='Escape')setFolderOpen(false)});
+zone.addEventListener('focusout',()=>setTimeout(()=>{if(!zone.contains(document.activeElement))setFolderOpen(false)},0));
+
+// Wheel between the cover and project page; scrolling inside the project remains native.
+let wheelTransitionUntil=0;
+window.addEventListener('wheel', event=>{
+  if(current!=='1:103' && current!=='1:111')return;
+  if(Date.now()<wheelTransitionUntil){event.preventDefault();return;}
+  if(event.ctrlKey || Math.abs(event.deltaY)<2 || Math.abs(event.deltaX)>Math.abs(event.deltaY))return;
+  const forward=current==='1:103' && event.deltaY>0;
+  const backward=current==='1:111' && window.scrollY<=1 && event.deltaY<0;
+  if(!forward && !backward)return;
+  event.preventDefault();wheelTransitionUntil=Date.now()+900;
+  show(forward?'1:111':'1:103');
+  const panel=document.querySelector('.active');
+  if(panel && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && panel.animate){
+    panel.animate([{opacity:0,transform:`translateY(${forward?24:-24}px)`},{opacity:1,transform:'translateY(0)'}],{duration:520,easing:'cubic-bezier(.22,1,.36,1)'});
+  }
+},{passive:false});
+const target=location.hash.slice(1).replace('-',':');show(heights[target]?target:'1:103',true);
+</script></body></html>
